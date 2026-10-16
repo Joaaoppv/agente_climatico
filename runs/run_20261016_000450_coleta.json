@@ -1,0 +1,34 @@
+{
+  "timestamp": "20261016_000450",
+  "etapa": "01_coleta",
+  "parametros": {
+    "cidade": "Curitiba",
+    "dias": 30,
+    "model": "opencode/nemotron-3.5-lightning-free"
+  },
+  "decisao_ia": {
+    "fonte_escolhida": "open_meteo",
+    "variaveis_selecionadas": [
+      "temperature_2m_max",
+      "temperature_2m_min",
+      "precipitation_sum",
+      "windspeed_10m_max",
+      "temperature_2m_mean"
+    ],
+    "justificativa_fonte": "open_meteo é a única fonte que suporta especificação de coordenadas geográficas (Curitiba: -25.4284, -49.2733), parâmetro past_days para dados históricos e estrutura daily das variáveis. wttr_in falta parâmetros históricos claros; wikipedia não fornece dados mensuráveis diários.",
+    "justificativa_variaveis": "As 5 variáveis cobrem o espectro completo para análise estatológica: temperaturas extremas (max/min), regime de precipitação, velocidade do vento e temperatura média. Esse conjunto permite cálculo de amplitude térmica, dias de chuva, estatísticas de vento e análise de tendências climáticas por estação."
+  },
+  "resultado": {
+    "arquivo_csv": "dados_clima.csv",
+    "total_linhas": 30,
+    "colunas_geradas": [
+      "data",
+      "temperature_2m_max",
+      "temperature_2m_min",
+      "precipitation_sum",
+      "windspeed_10m_max",
+      "temperature_2m_mean",
+      "cidade"
+    ]
+  }
+}

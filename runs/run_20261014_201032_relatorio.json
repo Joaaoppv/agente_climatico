@@ -1,0 +1,64 @@
+{
+  "timestamp": "20261014_201032",
+  "etapa": "03_relatorio",
+  "modelo": "opencode/nemotron-3.5-lightning-free",
+  "metadados": {
+    "gerado_em": "20261014_200632",
+    "cidade": "Prudente",
+    "tamanho_amostral": 30,
+    "periodo": {
+      "inicio": "2026-09-14",
+      "fim": "2026-10-13"
+    }
+  },
+  "plano_editorial_ia": {
+    "titulo_relatorio": "Análise Microclimática de Dados Temperatura e Velocidade do Vento em Prudente",
+    "figuras_encomendadas": [
+      {
+        "id": "figura_1",
+        "tipo_ferramenta": "distribuicao",
+        "parametros": {
+          "variavel_1": "temperature_2m_max"
+        },
+        "titulo_grafico": "Distribuição da Temperatura Máxima 2m em Prudente",
+        "legenda_abnt": "Figura 1 – Distribuição da temperatura máxima 2m em Prudente. Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_2",
+        "tipo_ferramenta": "distribuicao",
+        "parametros": {
+          "variavel_1": "windspeed_10m_max"
+        },
+        "titulo_grafico": "Distribuição da Velocidade Máxima do Vento em 10m em Prudente",
+        "legenda_abnt": "Figura 2 – Distribuição da velocidade máxima do vento em 10m em Prudente. Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_3",
+        "tipo_ferramenta": "dispersao",
+        "parametros": {
+          "var_x": "temperature_2m_max",
+          "var_y": "windspeed_10m_max"
+        },
+        "titulo_grafico": "Diagrama de Dispersão: Temperatura Máxima vs Velocidade do Vento em Prudente",
+        "legenda_abnt": "Figura 3 – Diagrama de dispersão com linha de regressão entre temperatura máxima 2m e velocidade máxima do vento em 10m em Prudente. Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_4",
+        "tipo_ferramenta": "serie_temporal",
+        "parametros": {
+          "variavel": "temperature_2m_max"
+        },
+        "titulo_grafico": "Série Temporal da Temperatura Máxima 2m em Prudente com Tendência",
+        "legenda_abnt": "Figura 4 – Série temporal da temperatura máxima 2m com reta de regressão e tendência em Prudente (2026-09-14 a 2026-10-13). Fonte: Dados da pesquisa (2026)."
+      }
+    ]
+  },
+  "artefatos_produzidos": {
+    "plano_editorial": "plano_editorial.json",
+    "relatorio_markdown": "relatorio_climatico.md",
+    "relatorio_html": "relatorio_climatico.html",
+    "relatorio_docx": "relatorio_climatico.docx",
+    "total_figuras_solicitadas": 4,
+    "total_figuras_geradas": 4
+  }
+}

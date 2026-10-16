@@ -1,0 +1,55 @@
+{
+  "timestamp": "20261014_192959",
+  "etapa": "03_relatorio",
+  "modelo": "opencode/nemotron-3.5-lightning-free",
+  "metadados": {
+    "gerado_em": "20261014_184907",
+    "cidade": "São Paulo",
+    "tamanho_amostral": 3,
+    "periodo": {
+      "inicio": "2026-10-11",
+      "fim": "2026-10-13"
+    }
+  },
+  "plano_editorial_ia": {
+    "titulo_relatorio": "Relatório de Estatística Aplicada: Análise Microclimática de São Paulo",
+    "figuras_encomendadas": [
+      {
+        "id": "figura_1",
+        "tipo_ferramenta": "distribuicao",
+        "parametros": {
+          "variavel_1": "temperature_2m_max"
+        },
+        "titulo_grafico": "Distribuição da temperatura máxima em São Paulo",
+        "legenda_abnt": "Figura 1 – Histograma e boxplot da temperatura máxima (2026-10-11 a 2026-10-13). Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_2",
+        "tipo_ferramenta": "distribuicao",
+        "parametros": {
+          "variavel_1": "temperature_2m_min"
+        },
+        "titulo_grafico": "Distribuição da temperatura mínima em São Paulo",
+        "legenda_abnt": "Figura 2 – Histograma e boxplot da temperatura mínima (2026-10-11 a 2026-10-13). Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_3",
+        "tipo_ferramenta": "dispersao",
+        "parametros": {
+          "var_x": "temperature_2m_max",
+          "var_y": "temperature_2m_min"
+        },
+        "titulo_grafico": "Dispersão entre temperatura máxima e mínima em São Paulo",
+        "legenda_abnt": "Figura 3 – Diagrama de dispersão com reta de regressão entre temperatura máxima e mínima (2026-10-11 a 2026-10-13). Fonte: Dados da pesquisa (2026)."
+      }
+    ]
+  },
+  "artefatos_produzidos": {
+    "plano_editorial": "plano_editorial.json",
+    "relatorio_markdown": "relatorio_climatico.md",
+    "relatorio_html": "relatorio_climatico.html",
+    "relatorio_docx": "relatorio_climatico.docx",
+    "total_figuras_solicitadas": 3,
+    "total_figuras_geradas": 3
+  }
+}

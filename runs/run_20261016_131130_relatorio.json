@@ -1,0 +1,69 @@
+{
+  "timestamp": "20261016_131130",
+  "etapa": "03_relatorio",
+  "modelo": "opencode/deepseek-v4.1-flash-free",
+  "metadados": {
+    "gerado_em": "20261016_125013",
+    "cidade": "Curitiba",
+    "tamanho_amostral": 30,
+    "periodo": {
+      "inicio": "2026-09-16",
+      "fim": "2026-10-15"
+    }
+  },
+  "plano_editorial_ia": {
+    "titulo_relatorio": "Relatório Técnico de Estatística Aplicada: Análise Microclimática de Curitiba",
+    "figuras_encomendadas": [
+      {
+        "id": "figura_1",
+        "tipo_ferramenta": "distribuicao",
+        "parametros": {
+          "variavel_1": "temperature_2m_max",
+          "variavel_2": "temperature_2m_min"
+        },
+        "titulo_grafico": "Distribuição das Temperaturas Máxima e Mínima Diárias em Curitiba",
+        "legenda_abnt": "Figura 1 – Histogramas e boxplots das temperaturas máxima e mínima diárias (30 dias). Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_2",
+        "tipo_ferramenta": "dispersao",
+        "parametros": {
+          "var_x": "temperature_2m_max",
+          "var_y": "temperature_2m_min"
+        },
+        "titulo_grafico": "Dispersão entre Temperatura Máxima e Temperatura Mínima com Reta de Regressão OLS",
+        "legenda_abnt": "Figura 2 – Diagrama de dispersão entre temperatura máxima e mínima diárias, com reta de regressão linear. Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_3",
+        "tipo_ferramenta": "matriz_correlacao",
+        "parametros": {
+          "lista_variaveis": [
+            "temperature_2m_max",
+            "temperature_2m_min",
+            "precipitation_sum"
+          ]
+        },
+        "titulo_grafico": "Matriz de Correlação de Pearson entre Variáveis Climáticas",
+        "legenda_abnt": "Figura 3 – Heatmap da matriz de correlações de Pearson entre temperatura máxima, temperatura mínima e precipitação. Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_4",
+        "tipo_ferramenta": "serie_temporal",
+        "parametros": {
+          "variavel": "temperature_2m_max"
+        },
+        "titulo_grafico": "Série Temporal da Temperatura Máxima Diária com Reta de Tendência",
+        "legenda_abnt": "Figura 4 – Série temporal da temperatura máxima diária ao longo de 30 dias, com reta de regressão linear. Fonte: Dados da pesquisa (2026)."
+      }
+    ]
+  },
+  "artefatos_produzidos": {
+    "plano_editorial": "plano_editorial.json",
+    "relatorio_markdown": "relatorio_climatico.md",
+    "relatorio_html": "relatorio_climatico.html",
+    "relatorio_docx": "relatorio_climatico.docx",
+    "total_figuras_solicitadas": 4,
+    "total_figuras_geradas": 4
+  }
+}

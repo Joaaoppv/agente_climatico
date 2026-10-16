@@ -1,0 +1,73 @@
+{
+  "timestamp": "20261014_184907",
+  "etapa": "02_analise",
+  "modelo": "opencode/nemotron-3.5-lightning-free",
+  "parametros": {
+    "arquivo_csv": "dados_clima.csv",
+    "cidade": "São Paulo",
+    "n_linhas": 3
+  },
+  "plano_ia": {
+    "variaveis_univariadas": [
+      "temperature_2m_max",
+      "temperature_2m_min",
+      "precipitation_sum"
+    ],
+    "pares_associacao": [
+      {
+        "var_x": "temperature_2m_max",
+        "var_y": "temperature_2m_min",
+        "justificativa_didatica": "Analisar a relação entre temperatura máxima e mínima para compreender o range diário e a amplitude térmica em São Paulo, conceito fundamental em meteorologia e estatística descritiva."
+      },
+      {
+        "var_x": "temperature_2m_max",
+        "var_y": "precipitation_sum",
+        "justificativa_didatica": "Verificar a associação inversa esperada entre temperatura máxima e precipitação, ensinando estudantes sobre covariância e a interpretação de correlações negativas em dados climáticos."
+      },
+      {
+        "var_x": "temperature_2m_min",
+        "var_y": "precipitation_sum",
+        "justificativa_didatica": "Explorar a relação entre temperatura mínima e chuva, proporcionando exemplo prático de teste de significância de correlação e interpretação de valores de r de Pearson."
+      }
+    ],
+    "variaveis_regressao_temporal": [
+      {
+        "variavel": "temperature_2m_max",
+        "pergunta_cientifica": "Houve tendência linear de aumento ou diminuição da temperatura máxima ao longo dos 3 dias de amostragem em São Paulo?"
+      },
+      {
+        "variavel": "precipitation_sum",
+        "pergunta_cientifica": "A precipitação acumulada apresentou tendência ao longo do período temporal analisado, indicando padrão climático consistente ou variabilidade aleatória?"
+      }
+    ],
+    "hipoteses_orientadoras": [
+      {
+        "id": "H1",
+        "alvo": "temperature_2m_max",
+        "h0": "A distribuição da temperatura máxima segue uma distribuição normal na população de São Paulo",
+        "h1": "A distribuição da temperatura máxima não segue uma distribuição normal na população de São Paulo",
+        "teste_sugerido": "Shapiro-Wilk"
+      },
+      {
+        "id": "H2",
+        "alvo": "temperature_2m_max vs temperature_2m_min",
+        "h0": "Não existe correlação linear significativa entre temperatura máxima e mínima (ρ = 0)",
+        "h1": "Existe correlação linear significativa entre temperatura máxima e mínima (ρ ≠ 0)",
+        "teste_sugerido": "Pearson"
+      },
+      {
+        "id": "H3",
+        "alvo": "precipitation_sum",
+        "h0": "A média da precipitação sumarial é igual a zero ou ao valor esperado da chuva esperada para o período",
+        "h1": "A média da precipitação sumarial difere do valor esperado",
+        "teste_sugerido": "Teste t de uma amostra"
+      }
+    ],
+    "justificativa_geral_plano": "Este plano cobre os fundamentos estatísticos essenciais para calouros: análise univariada estabelece características de cada variável; associação bivariada ensina sobre relações e covariância entre fenômenos meteorológicos; regressão temporal introduz conceitos de tendência e mudança ao longo do tempo; e a formulação de hipóteses com testes estatísticos (Shapiro-Wilk, Pearson, t) fornece estrutura rigorosa para inferência estatística, mesmo com amostras limitadas como N=3, ensinando os estudantes sobre os pressupostos, limitações e interpretação correta dos resultados em contexto real."
+  },
+  "sumario_resultados": {
+    "total_univariadas": 3,
+    "total_pares_bivariados": 3,
+    "total_regressoes": 2
+  }
+}

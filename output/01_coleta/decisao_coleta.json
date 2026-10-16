@@ -1,0 +1,17 @@
+{
+  "fonte_escolhida": "open_meteo",
+  "variaveis_selecionadas": [
+    "temperature_2m_max",
+    "temperature_2m_min",
+    "temperature_2m_mean",
+    "apparent_temperature_max",
+    "apparent_temperature_min",
+    "precipitation_sum",
+    "relative_humidity_2m_mean",
+    "wind_speed_10m_max",
+    "shortwave_radiation_sum",
+    "surface_pressure_mean"
+  ],
+  "justificativa_fonte": "O endpoint https://api.open-meteo.com/v1/forecast foi o único validado tecnicamente para os três requisitos: (1) localização por latitude/longitude permite mirar Curitiba diretamente; (2) o parâmetro past_days=30 combinado com forecast_days=0 retornou exatamente 30 registros diários (2026-09-16 a 2026-10-15), cobrindo com precisão a janela pedida sem dado excedente; (3) a resposta é JSON tabular com arrays diários paralelos, pronta para exportação (CSV/DataFrame). O wttr.in foi descartado porque, no teste real, só fornece condição atual e previsão de ~3 dias, sem suporte a 30 dias de histórico. A fonte wikipedia foi descartada por ser um artigo textual descritivo do clima do Brasil, sem medições diárias estruturadas, sem endpoint de dados e sem recorte temporal.",
+  "justificativa_variaveis": "O conjunto foi definido para permitir análise estatística aprofundada do clima subtropical de Curitiba cobrindo múltiplas dimensões físicas: temperature_2m_max, temperature_2m_min e temperature_2m_mean capturam extremos e tendência térmica; apparent_temperature_max e apparent_temperature_min expressam a sensação térmica relevante ao conforto humano; precipitation_sum quantifica o regime pluviométrico, traço marcante da cidade; relative_humidity_2m_mean caracteriza a umidade típica de clima subtropical úmido; wind_speed_10m_max representa a dinâmica de ventos; shortwave_radiation_sum indica radiação solar e serve como proxy de nebulosidade; e surface_pressure_mean permite detectar passagens frontais. Todas foram confirmadas como disponíveis e retornando valores no teste real do endpoint, garantindo viabilidade de coleta e qualidade adequada para o estudo."
+}

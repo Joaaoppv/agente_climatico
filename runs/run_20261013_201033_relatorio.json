@@ -1,0 +1,64 @@
+{
+  "timestamp": "20261013_201033",
+  "etapa": "03_relatorio",
+  "metadados": {
+    "gerado_em": "20261013_193126",
+    "cidade": "Rio de Janeiro",
+    "tamanho_amostral": 14,
+    "periodo": {
+      "inicio": "2026-09-28",
+      "fim": "2026-10-11"
+    }
+  },
+  "plano_editorial_ia": {
+    "titulo_relatorio": "Relatório Técnico de Estatística Aplicada: Análise Microclimática do Rio de Janeiro",
+    "figuras_encomendadas": [
+      {
+        "id": "figura_1",
+        "tipo_ferramenta": "distribuicao",
+        "parametros": {
+          "variavel_1": "temperature_2m_max",
+          "variavel_2": "apparent_temperature_max"
+        },
+        "titulo_grafico": "Distribuição Comparativa: Temperatura Máxima do Ar e Sensação Térmica Máxima",
+        "legenda_abnt": "Figura 1 – Histograma e boxplot acoplados das temperaturas máximas do ar e sensação térmica máxima diária no Rio de Janeiro (28/09/2026 a 11/10/2026). Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_2",
+        "tipo_ferramenta": "dispersao",
+        "parametros": {
+          "var_x": "shortwave_radiation_sum",
+          "var_y": "temperature_2m_max"
+        },
+        "titulo_grafico": "Relação Linear entre Radiação Solar Incidente e Temperatura Máxima do Ar",
+        "legenda_abnt": "Figura 2 – Diagrama de dispersão e reta ajustada por Mínimos Quadrados Ordinários (OLS) entre a soma de radiação solar de ondas curtas (MJ/m²) e a temperatura máxima do ar (°C). Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_3",
+        "tipo_ferramenta": "dispersao",
+        "parametros": {
+          "var_x": "wind_speed_10m_max",
+          "var_y": "wind_gusts_10m_max"
+        },
+        "titulo_grafico": "Covariância e Relação entre Velocidade Contínua do Vento e Rajadas Máximas",
+        "legenda_abnt": "Figura 3 – Diagrama de dispersão da velocidade máxima sustentada do vento em relação às rajadas máximas diárias a 10 metros (km/h). Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_4",
+        "tipo_ferramenta": "serie_temporal",
+        "parametros": {
+          "variavel": "temperature_2m_max"
+        },
+        "titulo_grafico": "Evolução Diária e Tendência Linear da Temperatura Máxima do Ar",
+        "legenda_abnt": "Figura 4 – Série temporal da temperatura máxima do ar ao longo da quinzena observada, evidenciando estabilidade térmica e ausência de inclinação linear significativa. Fonte: Dados da pesquisa (2026)."
+      }
+    ]
+  },
+  "artefatos_produzidos": {
+    "plano_editorial": "plano_editorial.json",
+    "relatorio_markdown": "relatorio_climatico.md",
+    "relatorio_html": "relatorio_climatico.html",
+    "relatorio_docx": "relatorio_climatico.docx",
+    "total_figuras_geradas": 4
+  }
+}

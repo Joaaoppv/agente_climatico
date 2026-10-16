@@ -1,0 +1,73 @@
+{
+  "timestamp": "20261016_011621",
+  "etapa": "02_analise",
+  "modelo": "opencode/nemotron-3.5-lightning-free",
+  "parametros": {
+    "arquivo_csv": "dados_clima.csv",
+    "cidade": "Curitiba",
+    "n_linhas": 15
+  },
+  "plano_ia": {
+    "variaveis_univariadas": [
+      "temperature_2m_max",
+      "temperature_2m_min",
+      "precipitation_sum"
+    ],
+    "pares_associacao": [
+      {
+        "var_x": "temperature_2m_max",
+        "var_y": "temperature_2m_min",
+        "justificativa_didatica": "Explorar relação entre temperaturas máxima e mínima, fundamentando análise do intervalo diário e correlação esperada positiva"
+      },
+      {
+        "var_x": "temperature_2m_max",
+        "var_y": "precipitation_sum",
+        "justificativa_didatica": "Analisar relação entre temperatura máxima e precipitação, conceito-chave em meteorologia para eventos de chuva intensos"
+      },
+      {
+        "var_x": "temperature_2m_min",
+        "var_y": "precipitation_sum",
+        "justificativa_didatica": "Verificar se temperatura mínima também mostra correlação com precipitação, complementando análise de variação térmica"
+      }
+    ],
+    "variaveis_regressao_temporal": [
+      {
+        "variavel": "temperature_2m_max",
+        "pergunta_cientifica": "Há tendência de aumento ou diminuição da temperatura máxima ao longo do período de observação?"
+      },
+      {
+        "variavel": "precipitation_sum",
+        "pergunta_cientifica": "Há tendência de mudança na soma total de precipitação ao longo do período de observação?"
+      }
+    ],
+    "hipoteses_orientadoras": [
+      {
+        "id": "H1",
+        "alvo": "correlacao temperature_2m_max e temperature_2m_min",
+        "h0": "Não há correlação linear entre temperature_2m_max e temperature_2m_min (ρ = 0)",
+        "h1": "Há correlação linear positiva entre temperature_2m_max e temperature_2m_min (ρ > 0)",
+        "teste_sugerido": "teste de correlação de Pearson"
+      },
+      {
+        "id": "H2",
+        "alvo": "tendencia temporal temperature_2m_max",
+        "h0": "Não há tendência temporal na temperature_2m_max (coeficiente de regressão = 0)",
+        "h1": "Há tendência temporal na temperature_2m_max (coeficiente de regressão ≠ 0)",
+        "teste_sugerido": "regressão linear simples com tempo"
+      },
+      {
+        "id": "H3",
+        "alvo": "correlacao temperature e precipitação",
+        "h0": "Não há correlação linear entre temperature_2m_max e precipitation_sum (ρ = 0)",
+        "h1": "Há correlação linear positiva entre temperature_2m_max e precipitation_sum (ρ > 0)",
+        "teste_sugerido": "teste de correlação de Pearson"
+      }
+    ],
+    "justificativa_geral_plano": "Plano estatístico para dataset meteorológico de Curitiba com 15 observações. As análises univariadas descrevem a distribuição de cada variável. Os pares de associação investigam relações físicas conhecidas entre temperatura e precipitação. A regressão temporal avalia mudanças ao longo do tempo. Hipóteses são coerentes com testes paramétricos adequados ao pequeno tamanho amostral."
+  },
+  "sumario_resultados": {
+    "total_univariadas": 3,
+    "total_pares_bivariados": 3,
+    "total_regressoes": 2
+  }
+}

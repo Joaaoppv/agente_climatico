@@ -1,0 +1,65 @@
+{
+  "timestamp": "20261016_132419",
+  "etapa": "03_relatorio",
+  "modelo": "opencode/deepseek-v4.1-flash-free",
+  "metadados": {
+    "gerado_em": "20261016_132117",
+    "cidade": "Curitiba",
+    "tamanho_amostral": 30,
+    "periodo": {
+      "inicio": "2026-09-16",
+      "fim": "2026-10-15"
+    }
+  },
+  "plano_editorial_ia": {
+    "titulo_relatorio": "Relatório Técnico de Estatística Aplicada: Análise Microclimática de Curitiba",
+    "figuras_encomendadas": [
+      {
+        "id": "figura_1",
+        "tipo_ferramenta": "distribuicao",
+        "parametros": {
+          "variavel_1": "temperature_2m_mean"
+        },
+        "titulo_grafico": "Histograma e boxplot da temperatura média diária (°C) em Curitiba",
+        "legenda_abnt": "Figura 1 – Distribuição da temperatura média diária do ar a 2 metros em Curitiba, com histograma e boxplot. Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_2",
+        "tipo_ferramenta": "dispersao",
+        "parametros": {
+          "var_x": "temperature_2m_max",
+          "var_y": "apparent_temperature_max"
+        },
+        "titulo_grafico": "Dispersão entre temperatura máxima real e temperatura máxima aparente (°C)",
+        "legenda_abnt": "Figura 2 – Diagrama de dispersão entre a temperatura máxima real e a temperatura máxima aparente, com reta de regressão OLS. Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_3",
+        "tipo_ferramenta": "dispersao",
+        "parametros": {
+          "var_x": "shortwave_radiation_sum",
+          "var_y": "temperature_2m_max"
+        },
+        "titulo_grafico": "Dispersão entre radiação solar de onda curta e temperatura máxima (°C)",
+        "legenda_abnt": "Figura 3 – Diagrama de dispersão entre a radiação solar de onda curta acumulada e a temperatura máxima diária, com reta de regressão OLS. Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_4",
+        "tipo_ferramenta": "serie_temporal",
+        "parametros": {
+          "variavel": "precipitation_sum"
+        },
+        "titulo_grafico": "Série temporal da precipitação diária acumulada (mm) em Curitiba",
+        "legenda_abnt": "Figura 4 – Série temporal da precipitação diária acumulada com reta de regressão e tendência. Fonte: Dados da pesquisa (2026)."
+      }
+    ]
+  },
+  "artefatos_produzidos": {
+    "plano_editorial": "plano_editorial.json",
+    "relatorio_markdown": "relatorio_climatico.md",
+    "relatorio_html": "relatorio_climatico.html",
+    "relatorio_docx": "relatorio_climatico.docx",
+    "total_figuras_solicitadas": 4,
+    "total_figuras_geradas": 4
+  }
+}

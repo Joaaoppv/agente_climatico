@@ -1,0 +1,68 @@
+{
+  "timestamp": "20261014_200632",
+  "etapa": "02_analise",
+  "modelo": "opencode/nemotron-3.5-lightning-free",
+  "parametros": {
+    "arquivo_csv": "dados_clima.csv",
+    "cidade": "Prudente",
+    "n_linhas": 30
+  },
+  "plano_ia": {
+    "variaveis_univariadas": [
+      "temperature_2m_max",
+      "precity_sum",
+      "windspeed_10m_max"
+    ],
+    "pares_associativity": [
+      {
+        "var_x": "temperature_2m_max",
+        "var_y": "precity_sum",
+        "justificativa_didatica": "Análise da relação temperatura vs precipitação/chuva para estudantes calouros"
+      },
+      {
+        "var_x": "windspeed_10m_max",
+        "var_y": "temperature_2m_max",
+        "justificativa_didatica": "Relação entre velocidade e rajadas de vento versus temperatura de forma didática"
+      }
+    ],
+    "variaveis_regressao_temporal": [
+      {
+        "variavel": "temperature_2m_max",
+        "pergunta_cientifica": "Verifica-se tendência de aquecimento ou arrefecimento da temperatura ao longo dos 30 dias"
+      },
+      {
+        "variavel": "precity_sum",
+        "pergunta_cientifica": "Verifica-se tendência de variação ao longo do período de 30 dias"
+      }
+    ],
+    "hipoteses_orientadoras": [
+      {
+        "id": "H1",
+        "alvo": "temperature_2m_max",
+        "h0": "Distribuição de temperature_2m_max segue segue normal",
+        "h1": "Distribuição de temperature_2m_max não normal",
+        "teste_sugerido": "Shapiro-Wilk"
+      },
+      {
+        "id": "H2",
+        "alvo": "precity_sum",
+        "h0": "Distribuição de precity_sum normality normal",
+        "h1": "Distribuição de precity_sum não normal",
+        "teste_sugerido": "Shapiro-Wilk"
+      },
+      {
+        "id": "H3",
+        "alvo": "correlacao temperature_2m_max vs precity_sum",
+        "h0": "Correlation de Pearson entre temperature_2m_max e precity_sum é zero",
+        "h1": "Correlation de Pearson entre temperature_2m_max e precity_sum não é zero",
+        "teste_sugerido": "Pearson"
+      }
+    ],
+    "justificativa_geral_plano": "Plano de análise estatística descritiva e inferencial para dataset meteorológico de 30 dias, cobrindo características univariadas de cada variável, relações de associação entre temperatura e precipitação/chuva e tendências temporais, orientando estudantes calouros na interpreta."
+  },
+  "sumario_resultados": {
+    "total_univariadas": 2,
+    "total_pares_bivariados": 0,
+    "total_regressoes": 1
+  }
+}

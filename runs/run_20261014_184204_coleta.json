@@ -1,0 +1,30 @@
+{
+  "timestamp": "20261014_184204",
+  "etapa": "01_coleta",
+  "parametros": {
+    "cidade": "São Paulo",
+    "dias": 3,
+    "model": "opencode/nemotron-3.5-lightning-free"
+  },
+  "decisao_ia": {
+    "fonte_escolhida": "open_meteo",
+    "variaveis_selecionadas": [
+      "temperature_2m_max",
+      "temperature_2m_min",
+      "precipitation_sum"
+    ],
+    "justificativa_fonte": "Open Metei é a única fonte que suporta nativamente o parâmetro past_days=3 para dados históricos, permite especificar coordenadas de São Paulo (-23.55, -46.64) e timezone America/Sao_Paulo, além de retornar dados diários estruturados em JSON. As outras fontes (WTTR In sem histórico consolidado e Wikipedia como conteúdo estático) não atendem aos requisitos de coleta de dados meteorológicos diários por período.",
+    "justificativa_variaveis": "temperature_2m_max e temperature_2m_min fornecem as temperaturas extremas diárias, essenciais para análise de variação térmica e tendências de aquecimento. precipitation_sum quantifica a chuva diária, permitindo análise de padrões de umidade e eventos extremos. Juntas, essas 3 variáveis formam o conjunto mínimo para estatística descriptiva (média, mediana, desvio padrão) e inferência climática sobre o período de 3 dias."
+  },
+  "resultado": {
+    "arquivo_csv": "dados_clima.csv",
+    "total_linhas": 3,
+    "colunas_geradas": [
+      "data",
+      "temperature_2m_max",
+      "temperature_2m_min",
+      "precipitation_sum",
+      "cidade"
+    ]
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "timestamp": "20261013_193126",
+  "etapa": "02_analise",
+  "parametros": {
+    "arquivo_csv": "dados_clima.csv",
+    "cidade": "Rio de Janeiro",
+    "n_linhas": 14
+  },
+  "plano_ia": {
+    "variaveis_univariadas": [
+      "temperature_2m_max",
+      "temperature_2m_min",
+      "apparent_temperature_max",
+      "apparent_temperature_min",
+      "precipitation_sum",
+      "precipitation_hours",
+      "wind_speed_10m_max",
+      "wind_gusts_10m_max",
+      "shortwave_radiation_sum"
+    ],
+    "pares_associacao": [
+      {
+        "var_x": "shortwave_radiation_sum",
+        "var_y": "temperature_2m_max",
+        "justificativa_didatica": "Demonstrar a relação de causalidade física entre incidência de radiação solar e temperatura máxima do ar, explorando dispersão e coeficientes de correlação linear."
+      },
+      {
+        "var_x": "temperature_2m_max",
+        "var_y": "apparent_temperature_max",
+        "justificativa_didatica": "Ilustrar multicolinearidade e alta correlação positiva quase unitária, permitindo discutir o papel de variáveis psicrométricas na percepção bioclimática."
+      },
+      {
+        "var_x": "wind_speed_10m_max",
+        "var_y": "wind_gusts_10m_max",
+        "justificativa_didatica": "Examinar a proporcionalidade e covariância estrita entre velocidade contínua e picos de rajadas, servindo como modelo ideal de homoscedasticidade."
+      },
+      {
+        "var_x": "precipitation_hours",
+        "var_y": "precipitation_sum",
+        "justificativa_didatica": "Comparar os coeficientes de Pearson e Spearman em dados com alta assimetria e presença de zeros, enfatizando a robustez de métodos não paramétricos."
+      },
+      {
+        "var_x": "temperature_2m_min",
+        "var_y": "temperature_2m_max",
+        "justificativa_didatica": "Analisar a covariância térmica diurna/noturna e investigar o comportamento da amplitude térmica ao longo dos 14 dias de observação."
+      }
+    ],
+    "variaveis_regressao_temporal": [
+      {
+        "variavel": "temperature_2m_max",
+        "pergunta_cientifica": "Existe tendência estatisticamente significativa de aquecimento ou resfriamento diurno no Rio de Janeiro ao longo da quinzena analisada?"
+      },
+      {
+        "variavel": "temperature_2m_min",
+        "pergunta_cientifica": "Houve variação temporal sistemática nas temperaturas mínimas noturnas, indicando persistência ou alteração no regime de massas de ar?"
+      },
+      {
+        "variavel": "shortwave_radiation_sum",
+        "pergunta_cientifica": "Identifica-se um padrão linear de aumento ou decréscimo da radiação solar incidente ao longo dos 14 dias (indício de mudança sistemática de cobertura de nuvens)?"
+      }
+    ],
+    "hipoteses_orientadoras": [
+      {
+        "id": "H1",
+        "alvo": "temperature_2m_max",
+        "h0": "Os dados de temperature_2m_max seguem uma distribuição normal (população Gaussiana).",
+        "h1": "Os dados de temperature_2m_max não seguem uma distribuição normal.",
+        "teste_sugerido": "Teste de Shapiro-Wilk"
+      },
+      {
+        "id": "H2",
+        "alvo": "precipitation_sum",
+        "h0": "Os dados de precipitation_sum seguem uma distribuição normal.",
+        "h1": "Os dados de precipitation_sum diferem significativamente de uma distribuição normal (assimetria positiva esperada).",
+        "teste_sugerido": "Teste de Shapiro-Wilk"
+      },
+      {
+        "id": "H3",
+        "alvo": "shortwave_radiation_sum vs. temperature_2m_max",
+        "h0": "A correlação populacional entre radiação solar e temperatura máxima é nula (rho = 0).",
+        "h1": "A correlação populacional entre radiação solar e temperatura máxima é significativamente diferente de zero (rho != 0).",
+        "teste_sugerido": "Teste t de Student para Significância da Correlação de Pearson"
+      },
+      {
+        "id": "H4",
+        "alvo": "precipitation_hours vs. precipitation_sum",
+        "h0": "Não existe associação monótona entre as horas de precipitação e o volume acumulado de chuva (rho_s = 0).",
+        "h1": "Existe associação monótona positiva significativa entre horas de chuva e volume acumulado (rho_s > 0).",
+        "teste_sugerido": "Teste de Correlação de Postos de Spearman"
+      },
+      {
+        "id": "H5",
+        "alvo": "temperature_2m_max ao longo do tempo (dias)",
+        "h0": "O coeficiente angular da reta de regressão temporal é igual a zero (beta_1 = 0, sem tendência temporal).",
+        "h1": "O coeficiente angular da reta de regressão temporal é diferente de zero (beta_1 != 0, com tendência linear de aquecimento ou resfriamento).",
+        "teste_sugerido": "Teste F de Análise de Variância da Regressão (ou Teste t de Student para o parâmetro beta_1)"
+      }
+    ],
+    "justificativa_geral_plano": "Este plano proporciona uma transição didática progressiva para calouros: inicia na exploração univariada descritiva e testes de aderência à normalidade em pequenas amostras (N=14); avança para a diferenciação prática entre correlações paramétricas (Pearson) e não paramétricas (Spearman) em dados meteorológicos reais; e culmina na inferência linear bivariada e temporal, capacitando os estudantes na formulação de hipóteses científicas formais, cálculo de p-valores e interpretação de intervalos de confiança t de Student."
+  },
+  "sumario_resultados": {
+    "total_univariadas": 9,
+    "total_pares_bivariados": 5,
+    "total_regressoes": 3
+  }
+}

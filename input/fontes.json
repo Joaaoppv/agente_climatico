@@ -1,0 +1,18 @@
+{
+  "fontes_disponiveis": [
+    {
+      "id": "open_meteo",
+      "url": "https://api.open-meteo.com/v1/forecast",
+      "exemplo_requisicao": "https://api.open-meteo.com/v1/forecast?latitude=-23.55&longitude=-46.64&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=America%2FSao_Paulo&past_days=3"
+    },
+    {
+      "id": "wttr_in",
+      "url": "https://wttr.in",
+      "exemplo_requisicao": "https://wttr.in/Sao_Paulo?format=j1"
+    },
+    {
+      "id": "wikipedia",
+      "url": "https://pt.wikipedia.org/wiki/Clima_do_Brasil"
+    }
+  ]
+}

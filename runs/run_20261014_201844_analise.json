@@ -1,0 +1,57 @@
+{
+  "timestamp": "20261014_201844",
+  "etapa": "02_analise",
+  "modelo": "opencode/nemotron-3.5-lightning-free",
+  "parametros": {
+    "arquivo_csv": "dados_clima.csv",
+    "cidade": "Prudente",
+    "n_linhas": 30
+  },
+  "plano_ia": {
+    "variaveis_univariadas": [
+      "temperature_2m_max",
+      "prec_sum",
+      "windspeed_10m_max"
+    ],
+    "pares_associates": [
+      {
+        "var_x": "temperature_2m_max",
+        "var_y": "prec_sum",
+        "justificativa_didatica": "Relação entre temperatura e precip, essencial para agricultura"
+      },
+      {
+        "var_x": "temperature_2m_max",
+        "var_y": "windspeed_10m_max",
+        "justificativa_didatica": "Relação entre temperatura e velocidade de"
+      }
+    ],
+    "variaveis_regressao_temporal": [
+      {
+        "variavel": "temperature_2m_max",
+        "pergunta_cientifica": "Verificar tendencia de aquecimento ou arrefecimento ao longo dos 30 dias"
+      }
+    ],
+    "hipoteses_orientadoras": [
+      {
+        "id": "H1",
+        "alvo": "temperature_2m_max",
+        "h0": "Distribuicao de temperature_2m_max e normal",
+        "h1": "Distribuicao de temperature_2m_max nao normal",
+        "teste_sugerido": "Shapiro-Wilks"
+      },
+      {
+        "id": "H2",
+        "alvo": "temperature_2m_max e prec_sum",
+        "h0": "Correlacao zero entre temperature e precip",
+        "h1": "existe correlacao entre temperature e precip",
+        "teste_sugerido": "Pearson"
+      }
+    ],
+    "justificativa_geral_plano": "Analise estatistica descritiva e inferencial para dataset meteorologico de 30 dias em Prudente, com caracterizacao univariada de todas as variaveis numericas, analise bivariada de relacoes climatic climatic climatic climatic climatically relevantes, e de proprias hipoteses formais orientadoras para estudantes."
+  },
+  "sumario_resultados": {
+    "total_univariadas": 2,
+    "total_pares_bivariados": 0,
+    "total_regressoes": 1
+  }
+}

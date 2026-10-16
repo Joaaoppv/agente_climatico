@@ -1,0 +1,69 @@
+{
+  "timestamp": "20261016_124215",
+  "etapa": "03_relatorio",
+  "modelo": "opencode/deepseek-v4.1-flash-free",
+  "metadados": {
+    "gerado_em": "20261016_123649",
+    "cidade": "Curitiba",
+    "tamanho_amostral": 10,
+    "periodo": {
+      "inicio": "2026-10-06",
+      "fim": "2026-10-15"
+    }
+  },
+  "plano_editorial_ia": {
+    "titulo_relatorio": "Relatório Técnico de Estatística Aplicada: Análise Microclimática de Curitiba (2026-10-06 a 2026-10-15)",
+    "figuras_encomendadas": [
+      {
+        "id": "figura_1",
+        "tipo_ferramenta": "distribuicao",
+        "parametros": {
+          "variavel_1": "temperature_2m_max",
+          "variavel_2": "temperature_2m_min"
+        },
+        "titulo_grafico": "Distribuição das Temperaturas Máximas e Mínimas Diárias em Curitiba",
+        "legenda_abnt": "Figura 1 – Histogramas e boxplots das temperaturas máxima e mínima diárias (temperature_2m_max e temperature_2m_min), em °C, para Curitiba, no período de 2026-10-06 a 2026-10-15. Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_2",
+        "tipo_ferramenta": "dispersao",
+        "parametros": {
+          "var_x": "temperature_2m_max",
+          "var_y": "precipitation_sum"
+        },
+        "titulo_grafico": "Relação entre Temperatura Máxima Diária e Precipitação Acumulada em Curitiba",
+        "legenda_abnt": "Figura 2 – Diagrama de dispersão entre temperatura máxima diária (temperature_2m_max, em °C) e precipitação acumulada (precipitation_sum, em mm), com reta de regressão linear OLS, para Curitiba, no período de 2026-10-06 a 2026-10-15. Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_3",
+        "tipo_ferramenta": "serie_temporal",
+        "parametros": {
+          "variavel": "temperature_2m_max"
+        },
+        "titulo_grafico": "Série Temporal da Temperatura Máxima Diária em Curitiba",
+        "legenda_abnt": "Figura 3 – Série temporal da temperatura máxima diária (temperature_2m_max, em °C) com reta de regressão e tendência estimada, para Curitiba, no período de 2026-10-06 a 2026-10-15. Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_4",
+        "tipo_ferramenta": "matriz_correlacao",
+        "parametros": {
+          "lista_variaveis": [
+            "temperature_2m_max",
+            "temperature_2m_min",
+            "precipitation_sum"
+          ]
+        },
+        "titulo_grafico": "Matriz de Correlações de Pearson entre Variáveis Climáticas em Curitiba",
+        "legenda_abnt": "Figura 4 – Mapa de calor da matriz de correlações de Pearson entre temperatura máxima, temperatura mínima e precipitação acumulada para Curitiba, no período de 2026-10-06 a 2026-10-15. Fonte: Dados da pesquisa (2026)."
+      }
+    ]
+  },
+  "artefatos_produzidos": {
+    "plano_editorial": "plano_editorial.json",
+    "relatorio_markdown": "relatorio_climatico.md",
+    "relatorio_html": "relatorio_climatico.html",
+    "relatorio_docx": "relatorio_climatico.docx",
+    "total_figuras_solicitadas": 4,
+    "total_figuras_geradas": 4
+  }
+}

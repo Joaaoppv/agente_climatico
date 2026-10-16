@@ -1,0 +1,73 @@
+{
+  "timestamp": "20261016_125013",
+  "etapa": "02_analise",
+  "modelo": "opencode/deepseek-v4.1-flash-free",
+  "parametros": {
+    "arquivo_csv": "dados_clima.csv",
+    "cidade": "Curitiba",
+    "n_linhas": 30
+  },
+  "plano_ia": {
+    "variaveis_univariadas": [
+      "temperature_2m_max",
+      "temperature_2m_min",
+      "precipitation_sum"
+    ],
+    "pares_associacao": [
+      {
+        "var_x": "temperature_2m_max",
+        "var_y": "temperature_2m_min",
+        "justificativa_didatica": "Ambas medem temperatura no mesmo dia; espera-se forte associacao positiva, ideal para introduzir correlacao."
+      },
+      {
+        "var_x": "temperature_2m_max",
+        "var_y": "precipitation_sum",
+        "justificativa_didatica": "Explora se dias mais quentes se associam a mais ou menos chuva, discutindo correlacao fraca/nula."
+      },
+      {
+        "var_x": "temperature_2m_min",
+        "var_y": "precipitation_sum",
+        "justificativa_didatica": "Compara a associacao da temperatura minima com chuva, complementando o par anterior."
+      }
+    ],
+    "variaveis_regressao_temporal": [
+      {
+        "variavel": "temperature_2m_max",
+        "pergunta_cientifica": "Ha tendencia temporal na temperatura maxima ao longo das 30 observacoes?"
+      },
+      {
+        "variavel": "precipitation_sum",
+        "pergunta_cientifica": "A precipitacao diaria apresenta tendencia ao longo do periodo observado?"
+      }
+    ],
+    "hipoteses_orientadoras": [
+      {
+        "id": "H1",
+        "alvo": "temperature_2m_max",
+        "h0": "A temperatura maxima segue distribuicao normal.",
+        "h1": "A temperatura maxima nao segue distribuicao normal.",
+        "teste_sugerido": "Shapiro-Wilk"
+      },
+      {
+        "id": "H2",
+        "alvo": "temperature_2m_max e temperature_2m_min",
+        "h0": "Nao ha correlacao linear entre temperatura maxima e minima.",
+        "h1": "Ha correlacao linear entre temperatura maxima e minima.",
+        "teste_sugerido": "Pearson (com Spearman como alternativa robusta)"
+      },
+      {
+        "id": "H3",
+        "alvo": "precipitation_sum no tempo",
+        "h0": "Nao ha tendencia temporal monotona na precipitacao.",
+        "h1": "Ha tendencia temporal monotona na precipitacao.",
+        "teste_sugerido": "Mann-Kendall"
+      }
+    ],
+    "justificativa_geral_plano": "Amostra pequena (n=30) favorece testes nao parametricos e robustos. O plano cobre descritivas e normalidade das tres variaveis, associacao por correlacao entre pares coerentes e tendencia temporal via regressao/Mann-Kendall, respeitando as variaveis disponiveis sem forcar analises inadequadas."
+  },
+  "sumario_resultados": {
+    "total_univariadas": 3,
+    "total_pares_bivariados": 3,
+    "total_regressoes": 2
+  }
+}

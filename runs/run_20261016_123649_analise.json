@@ -1,0 +1,73 @@
+{
+  "timestamp": "20261016_123649",
+  "etapa": "02_analise",
+  "modelo": "opencode/deepseek-v4.1-flash-free",
+  "parametros": {
+    "arquivo_csv": "dados_clima.csv",
+    "cidade": "Curitiba",
+    "n_linhas": 10
+  },
+  "plano_ia": {
+    "variaveis_univariadas": [
+      "temperature_2m_max",
+      "temperature_2m_min",
+      "precipitation_sum"
+    ],
+    "pares_associacao": [
+      {
+        "var_x": "temperature_2m_max",
+        "var_y": "temperature_2m_min",
+        "justificativa_didatica": "Variáveis fisicamente acopladas (máximas e mínimas diárias); espera-se correlação positiva forte, bom exemplo de associação linear em amostra pequena."
+      },
+      {
+        "var_x": "temperature_2m_max",
+        "var_y": "precipitation_sum",
+        "justificativa_didatica": "Permite discutir se dias mais quentes coincidem com mais chuva; relação geralmente fraca, útil para contrastar com o par anterior."
+      },
+      {
+        "var_x": "temperature_2m_min",
+        "var_y": "precipitation_sum",
+        "justificativa_didatica": "Complementa o par anterior e mostra como a associação com chuva varia entre extremos térmicos."
+      }
+    ],
+    "variaveis_regressao_temporal": [
+      {
+        "variavel": "temperature_2m_max",
+        "pergunta_cientifica": "Existe tendência temporal monotônica na temperatura máxima diária ao longo das observações em Curitiba?"
+      },
+      {
+        "variavel": "precipitation_sum",
+        "pergunta_cientifica": "A precipitação diária apresenta tendência temporal ou permanece sem padrão direcional na série observada?"
+      }
+    ],
+    "hipoteses_orientadoras": [
+      {
+        "id": "H1",
+        "alvo": "temperature_2m_max",
+        "h0": "A temperatura máxima diária segue distribuição normal.",
+        "h1": "A temperatura máxima diária não segue distribuição normal.",
+        "teste_sugerido": "Shapiro-Wilk (complementado por assimetria e curtose descritivas)"
+      },
+      {
+        "id": "H2",
+        "alvo": "temperature_2m_max vs temperature_2m_min",
+        "h0": "Não há correlação monotônica entre temperatura máxima e mínima.",
+        "h1": "Há correlação monotônica positiva entre temperatura máxima e mínima.",
+        "teste_sugerido": "Spearman (robusto para n=10 e possível não normalidade)"
+      },
+      {
+        "id": "H3",
+        "alvo": "temperature_2m_max no tempo",
+        "h0": "Não há tendência temporal na temperatura máxima (inclinação = 0).",
+        "h1": "Há tendência temporal na temperatura máxima (inclinação ≠ 0).",
+        "teste_sugerido": "Regressão linear por índice temporal / teste de Mann-Kendall"
+      }
+    ],
+    "justificativa_geral_plano": "Amostra pequena (n=10) com três variáveis numéricas contínuas de um único local. O plano prioriza estatísticas descritivas (média, desvio, mediana, amplitude, quartis) e verificação de normalidade (Shapiro-Wilk) por variável, pois testes paramétricos subsequentes dependem dessa suposição. Como a amostra é reduzida, usam-se correlações de Spearman, menos sensíveis a outliers e não normalidade, para os pares de associação. A regressão temporal é tratada como exploratória, apenas com temperatura máxima e precipitação, por serem as variáveis de maior interesse climático e coerentes com séries diárias; os resultados devem ser interpretados com cautela pelo baixo poder estatístico."
+  },
+  "sumario_resultados": {
+    "total_univariadas": 3,
+    "total_pares_bivariados": 3,
+    "total_regressoes": 2
+  }
+}

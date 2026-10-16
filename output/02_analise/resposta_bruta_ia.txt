@@ -1,0 +1,65 @@
+{
+  "variaveis_univariadas": [
+    "temperature_2m_max",
+    "temperature_2m_min",
+    "temperature_2m_mean",
+    "apparent_temperature_max",
+    "apparent_temperature_min",
+    "precipitation_sum",
+    "relative_humidity_2m_mean",
+    "wind_speed_10m_max",
+    "shortwave_radiation_sum",
+    "surface_pressure_mean"
+  ],
+  "pares_associacao": [
+    {
+      "var_x": "temperature_2m_max",
+      "var_y": "apparent_temperature_max",
+      "justificativa_didatica": "Par fortemente acoplado fisicamente; bom exemplo didático de correlação positiva esperada."
+    },
+    {
+      "var_x": "shortwave_radiation_sum",
+      "var_y": "temperature_2m_max",
+      "justificativa_didatica": "Radiação solar como forçante da temperatura; ilustra dependência energética."
+    },
+    {
+      "var_x": "relative_humidity_2m_mean",
+      "var_y": "temperature_2m_mean",
+      "justificativa_didatica": "Relação inversa esperada; útil para discutir correlação negativa e não linearidade."
+    }
+  ],
+  "variaveis_regressao_temporal": [
+    {
+      "variavel": "temperature_2m_mean",
+      "pergunta_cientifica": "A temperatura média apresenta tendência temporal significativa ao longo das observações?"
+    },
+    {
+      "variavel": "precipitation_sum",
+      "pergunta_cientifica": "A precipitação acumulada mostra tendência ou padrão temporal ao longo do período?"
+    }
+  ],
+  "hipoteses_orientadoras": [
+    {
+      "id": "H1",
+      "alvo": "temperature_2m_mean",
+      "h0": "A variável segue distribuição normal.",
+      "h1": "A variável não segue distribuição normal.",
+      "teste_sugerido": "Shapiro-Wilk"
+    },
+    {
+      "id": "H2",
+      "alvo": "temperature_2m_max e apparent_temperature_max",
+      "h0": "Não há correlação entre as duas variáveis.",
+      "h1": "Há correlação entre as duas variáveis.",
+      "teste_sugerido": "Spearman (ou Pearson se normalidade confirmada)"
+    },
+    {
+      "id": "H3",
+      "alvo": "temperature_2m_mean ao longo do tempo",
+      "h0": "Não existe tendência temporal na temperatura média.",
+      "h1": "Existe tendência temporal na temperatura média.",
+      "teste_sugerido": "Mann-Kendall com regressão linear de suporte"
+    }
+  ],
+  "justificativa_geral_plano": "Com 30 observações, prioriza-se estatística descritiva e testes não paramétricos robustos para amostras pequenas. As univariadas cobrem todas as variáveis para caracterizar distribuição, dispersão e outliers; as associações focam relações físicas relevantes; a regressão temporal avalia tendências de temperatura e precipitação; as hipóteses testam normalidade, correlação e tendência de forma didática e adequada ao tamanho amostral."
+}

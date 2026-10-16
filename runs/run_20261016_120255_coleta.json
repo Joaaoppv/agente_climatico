@@ -1,0 +1,30 @@
+{
+  "timestamp": "20261016_120255",
+  "etapa": "01_coleta",
+  "parametros": {
+    "cidade": "Curitiba",
+    "dias": 10,
+    "model": "opencode/nemotron-3.5-lightning-free"
+  },
+  "decisao_ia": {
+    "fonte_escolhida": "open_meteo",
+    "variaveis_selecionadas": [
+      "temperature_2m_max",
+      "temperature_2m_min",
+      "precipitation_sum"
+    ],
+    "justificativa_fonte": "Open Metea é a única fonte que oferece endpoint específico para dados meteorológicos históricos, com suporte a coordenadas geográficas (Curitiba: ~-25.43, -49.27), parâmetro 'past_days' para recorte exato de 10 dias e retorno JSON estruturado em formato tabular. WTTR In e Wikipedia não atendem aos requisitos de coleta de dados históricos quantitativos.",
+    "justificativa_variaveis": "As três variáveis selecionadas cobrem os aspectos termodinâmicos essenciais da temperatura (máx e min, permitindo cálculo de amplitude e média) e a disponibilidade de água (precipitação). Juntas permitem análises de variância térmica, tendências de temperatura e correlação com padrões de chuva — o tríade mínima para estatística climológica diária."
+  },
+  "resultado": {
+    "arquivo_csv": "dados_clima.csv",
+    "total_linhas": 10,
+    "colunas_geradas": [
+      "data",
+      "temperature_2m_max",
+      "temperature_2m_min",
+      "precipitation_sum",
+      "cidade"
+    ]
+  }
+}

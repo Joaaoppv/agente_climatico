@@ -1,0 +1,483 @@
+{
+  "metadados": {
+    "gerado_em": "20261016_132117",
+    "cidade": "Curitiba",
+    "tamanho_amostral": 30,
+    "periodo": {
+      "inicio": "2026-09-16",
+      "fim": "2026-10-15"
+    }
+  },
+  "analise_univariada": {
+    "temperature_2m_max": {
+      "n_observacoes": 30,
+      "medidas_posicao": {
+        "media": 21.7333,
+        "mediana": 22.15,
+        "moda": 24.6,
+        "percentil_25": 18.75,
+        "percentil_75": 24.35
+      },
+      "medidas_dispersao": {
+        "variancia_amostral": 15.4954,
+        "desvio_padrao": 3.9364,
+        "minimo": 14.5,
+        "maximo": 29.4,
+        "amplitude_total": 14.9,
+        "amplitude_interquartil_iqr": 5.6
+      },
+      "forma_distribuicao": {
+        "assimetria_skewness": 0.0378,
+        "curtose_kurtosis": -0.5844
+      },
+      "intervalo_confianca_95": {
+        "limite_inferior": 20.2634,
+        "limite_superior": 23.2032,
+        "margem_erro": 1.4699,
+        "nivel_confianca": 0.95,
+        "distribuicao": "t-Student",
+        "graus_liberdade": 29
+      },
+      "teste_normalidade_shapiro": {
+        "estatistica_w": 0.9782,
+        "p_valor": 0.77551,
+        "distribuicao_normal_5pct": true,
+        "interpretacao": "Não há evidências para rejeitar a normalidade"
+      }
+    },
+    "temperature_2m_min": {
+      "n_observacoes": 30,
+      "medidas_posicao": {
+        "media": 13.4567,
+        "mediana": 13.85,
+        "moda": 14.5,
+        "percentil_25": 11.425,
+        "percentil_75": 14.575
+      },
+      "medidas_dispersao": {
+        "variancia_amostral": 5.0205,
+        "desvio_padrao": 2.2406,
+        "minimo": 9.5,
+        "maximo": 18.3,
+        "amplitude_total": 8.8,
+        "amplitude_interquartil_iqr": 3.15
+      },
+      "forma_distribuicao": {
+        "assimetria_skewness": 0.0585,
+        "curtose_kurtosis": -0.5013
+      },
+      "intervalo_confianca_95": {
+        "limite_inferior": 12.62,
+        "limite_superior": 14.2933,
+        "margem_erro": 0.8367,
+        "nivel_confianca": 0.95,
+        "distribuicao": "t-Student",
+        "graus_liberdade": 29
+      },
+      "teste_normalidade_shapiro": {
+        "estatistica_w": 0.9621,
+        "p_valor": 0.35019,
+        "distribuicao_normal_5pct": true,
+        "interpretacao": "Não há evidências para rejeitar a normalidade"
+      }
+    },
+    "temperature_2m_mean": {
+      "n_observacoes": 30,
+      "medidas_posicao": {
+        "media": 16.7967,
+        "mediana": 17.3,
+        "moda": 17.9,
+        "percentil_25": 14.625,
+        "percentil_75": 18.8
+      },
+      "medidas_dispersao": {
+        "variancia_amostral": 7.2617,
+        "desvio_padrao": 2.6948,
+        "minimo": 11.2,
+        "maximo": 20.7,
+        "amplitude_total": 9.5,
+        "amplitude_interquartil_iqr": 4.175
+      },
+      "forma_distribuicao": {
+        "assimetria_skewness": -0.3815,
+        "curtose_kurtosis": -0.8563
+      },
+      "intervalo_confianca_95": {
+        "limite_inferior": 15.7904,
+        "limite_superior": 17.8029,
+        "margem_erro": 1.0062,
+        "nivel_confianca": 0.95,
+        "distribuicao": "t-Student",
+        "graus_liberdade": 29
+      },
+      "teste_normalidade_shapiro": {
+        "estatistica_w": 0.954,
+        "p_valor": 0.21608,
+        "distribuicao_normal_5pct": true,
+        "interpretacao": "Não há evidências para rejeitar a normalidade"
+      }
+    },
+    "apparent_temperature_max": {
+      "n_observacoes": 30,
+      "medidas_posicao": {
+        "media": 22.7733,
+        "mediana": 22.85,
+        "moda": 23.1,
+        "percentil_25": 18.875,
+        "percentil_75": 26.7
+      },
+      "medidas_dispersao": {
+        "variancia_amostral": 24.6986,
+        "desvio_padrao": 4.9698,
+        "minimo": 13.1,
+        "maximo": 32.0,
+        "amplitude_total": 18.9,
+        "amplitude_interquartil_iqr": 7.825
+      },
+      "forma_distribuicao": {
+        "assimetria_skewness": 0.065,
+        "curtose_kurtosis": -0.6038
+      },
+      "intervalo_confianca_95": {
+        "limite_inferior": 20.9176,
+        "limite_superior": 24.6291,
+        "margem_erro": 1.8557,
+        "nivel_confianca": 0.95,
+        "distribuicao": "t-Student",
+        "graus_liberdade": 29
+      },
+      "teste_normalidade_shapiro": {
+        "estatistica_w": 0.9761,
+        "p_valor": 0.71551,
+        "distribuicao_normal_5pct": true,
+        "interpretacao": "Não há evidências para rejeitar a normalidade"
+      }
+    },
+    "apparent_temperature_min": {
+      "n_observacoes": 30,
+      "medidas_posicao": {
+        "media": 13.11,
+        "mediana": 13.6,
+        "moda": 9.0,
+        "percentil_25": 10.375,
+        "percentil_75": 14.95
+      },
+      "medidas_dispersao": {
+        "variancia_amostral": 9.1809,
+        "desvio_padrao": 3.03,
+        "minimo": 7.5,
+        "maximo": 18.6,
+        "amplitude_total": 11.1,
+        "amplitude_interquartil_iqr": 4.575
+      },
+      "forma_distribuicao": {
+        "assimetria_skewness": -0.1029,
+        "curtose_kurtosis": -0.7833
+      },
+      "intervalo_confianca_95": {
+        "limite_inferior": 11.9786,
+        "limite_superior": 14.2414,
+        "margem_erro": 1.1314,
+        "nivel_confianca": 0.95,
+        "distribuicao": "t-Student",
+        "graus_liberdade": 29
+      },
+      "teste_normalidade_shapiro": {
+        "estatistica_w": 0.9601,
+        "p_valor": 0.31163,
+        "distribuicao_normal_5pct": true,
+        "interpretacao": "Não há evidências para rejeitar a normalidade"
+      }
+    },
+    "precipitation_sum": {
+      "n_observacoes": 30,
+      "medidas_posicao": {
+        "media": 6.0033,
+        "mediana": 4.4,
+        "moda": 0.0,
+        "percentil_25": 0.85,
+        "percentil_75": 10.475
+      },
+      "medidas_dispersao": {
+        "variancia_amostral": 38.99,
+        "desvio_padrao": 6.2442,
+        "minimo": 0.0,
+        "maximo": 27.5,
+        "amplitude_total": 27.5,
+        "amplitude_interquartil_iqr": 9.625
+      },
+      "forma_distribuicao": {
+        "assimetria_skewness": 1.501,
+        "curtose_kurtosis": 3.2631
+      },
+      "intervalo_confianca_95": {
+        "limite_inferior": 3.6717,
+        "limite_superior": 8.335,
+        "margem_erro": 2.3316,
+        "nivel_confianca": 0.95,
+        "distribuicao": "t-Student",
+        "graus_liberdade": 29
+      },
+      "teste_normalidade_shapiro": {
+        "estatistica_w": 0.8401,
+        "p_valor": 0.00039,
+        "distribuicao_normal_5pct": false,
+        "interpretacao": "Rejeita-se a hipótese de normalidade"
+      }
+    },
+    "relative_humidity_2m_mean": {
+      "n_observacoes": 30,
+      "medidas_posicao": {
+        "media": 87.0333,
+        "mediana": 87.5,
+        "moda": 88.0,
+        "percentil_25": 84.0,
+        "percentil_75": 90.0
+      },
+      "medidas_dispersao": {
+        "variancia_amostral": 25.3437,
+        "desvio_padrao": 5.0343,
+        "minimo": 76.0,
+        "maximo": 98.0,
+        "amplitude_total": 22.0,
+        "amplitude_interquartil_iqr": 6.0
+      },
+      "forma_distribuicao": {
+        "assimetria_skewness": -0.0853,
+        "curtose_kurtosis": 0.4343
+      },
+      "intervalo_confianca_95": {
+        "limite_inferior": 85.1535,
+        "limite_superior": 88.9132,
+        "margem_erro": 1.8798,
+        "nivel_confianca": 0.95,
+        "distribuicao": "t-Student",
+        "graus_liberdade": 29
+      },
+      "teste_normalidade_shapiro": {
+        "estatistica_w": 0.9702,
+        "p_valor": 0.54346,
+        "distribuicao_normal_5pct": true,
+        "interpretacao": "Não há evidências para rejeitar a normalidade"
+      }
+    },
+    "wind_speed_10m_max": {
+      "n_observacoes": 30,
+      "medidas_posicao": {
+        "media": 14.4133,
+        "mediana": 13.55,
+        "moda": 15.7,
+        "percentil_25": 11.8,
+        "percentil_75": 16.15
+      },
+      "medidas_dispersao": {
+        "variancia_amostral": 18.8846,
+        "desvio_padrao": 4.3456,
+        "minimo": 8.5,
+        "maximo": 26.5,
+        "amplitude_total": 18.0,
+        "amplitude_interquartil_iqr": 4.35
+      },
+      "forma_distribuicao": {
+        "assimetria_skewness": 1.0278,
+        "curtose_kurtosis": 1.0128
+      },
+      "intervalo_confianca_95": {
+        "limite_inferior": 12.7906,
+        "limite_superior": 16.036,
+        "margem_erro": 1.6227,
+        "nivel_confianca": 0.95,
+        "distribuicao": "t-Student",
+        "graus_liberdade": 29
+      },
+      "teste_normalidade_shapiro": {
+        "estatistica_w": 0.9244,
+        "p_valor": 0.03499,
+        "distribuicao_normal_5pct": false,
+        "interpretacao": "Rejeita-se a hipótese de normalidade"
+      }
+    },
+    "shortwave_radiation_sum": {
+      "n_observacoes": 30,
+      "medidas_posicao": {
+        "media": 14.232,
+        "mediana": 13.745,
+        "moda": 6.9,
+        "percentil_25": 9.8575,
+        "percentil_75": 18.1175
+      },
+      "medidas_dispersao": {
+        "variancia_amostral": 35.9152,
+        "desvio_padrao": 5.9929,
+        "minimo": 3.55,
+        "maximo": 24.85,
+        "amplitude_total": 21.3,
+        "amplitude_interquartil_iqr": 8.26
+      },
+      "forma_distribuicao": {
+        "assimetria_skewness": 0.1734,
+        "curtose_kurtosis": -1.0172
+      },
+      "intervalo_confianca_95": {
+        "limite_inferior": 11.9942,
+        "limite_superior": 16.4698,
+        "margem_erro": 2.2378,
+        "nivel_confianca": 0.95,
+        "distribuicao": "t-Student",
+        "graus_liberdade": 29
+      },
+      "teste_normalidade_shapiro": {
+        "estatistica_w": 0.9587,
+        "p_valor": 0.28625,
+        "distribuicao_normal_5pct": true,
+        "interpretacao": "Não há evidências para rejeitar a normalidade"
+      }
+    },
+    "surface_pressure_mean": {
+      "n_observacoes": 30,
+      "medidas_posicao": {
+        "media": 913.45,
+        "mediana": 913.65,
+        "moda": 914.4,
+        "percentil_25": 910.95,
+        "percentil_75": 914.4
+      },
+      "medidas_dispersao": {
+        "variancia_amostral": 8.1571,
+        "desvio_padrao": 2.8561,
+        "minimo": 909.4,
+        "maximo": 921.0,
+        "amplitude_total": 11.6,
+        "amplitude_interquartil_iqr": 3.45
+      },
+      "forma_distribuicao": {
+        "assimetria_skewness": 0.8675,
+        "curtose_kurtosis": 0.8735
+      },
+      "intervalo_confianca_95": {
+        "limite_inferior": 912.3835,
+        "limite_superior": 914.5165,
+        "margem_erro": 1.0665,
+        "nivel_confianca": 0.95,
+        "distribuicao": "t-Student",
+        "graus_liberdade": 29
+      },
+      "teste_normalidade_shapiro": {
+        "estatistica_w": 0.9174,
+        "p_valor": 0.02304,
+        "distribuicao_normal_5pct": false,
+        "interpretacao": "Rejeita-se a hipótese de normalidade"
+      }
+    }
+  },
+  "analise_bivariada_associacao": [
+    {
+      "variavel_x": "temperature_2m_max",
+      "variavel_y": "apparent_temperature_max",
+      "n_pares": 30,
+      "covariancia": 19.2078,
+      "correlacao_pearson": {
+        "coeficiente_r": 0.9818,
+        "p_valor": 0.0,
+        "significativo_5pct": true,
+        "classificacao": "muito forte positiva"
+      },
+      "correlacao_spearman": {
+        "coeficiente_rho": 0.9775,
+        "p_valor": 0.0,
+        "significativo_5pct": true,
+        "classificacao": "muito forte positiva"
+      },
+      "justificativa_didatica": "Par fortemente acoplado fisicamente; bom exemplo didático de correlação positiva esperada."
+    },
+    {
+      "variavel_x": "shortwave_radiation_sum",
+      "variavel_y": "temperature_2m_max",
+      "n_pares": 30,
+      "covariancia": 16.708,
+      "correlacao_pearson": {
+        "coeficiente_r": 0.7082,
+        "p_valor": 1e-05,
+        "significativo_5pct": true,
+        "classificacao": "forte positiva"
+      },
+      "correlacao_spearman": {
+        "coeficiente_rho": 0.6928,
+        "p_valor": 2e-05,
+        "significativo_5pct": true,
+        "classificacao": "forte positiva"
+      },
+      "justificativa_didatica": "Radiação solar como forçante da temperatura; ilustra dependência energética."
+    },
+    {
+      "variavel_x": "relative_humidity_2m_mean",
+      "variavel_y": "temperature_2m_mean",
+      "n_pares": 30,
+      "covariancia": -7.962,
+      "correlacao_pearson": {
+        "coeficiente_r": -0.5869,
+        "p_valor": 0.00065,
+        "significativo_5pct": true,
+        "classificacao": "moderada negativa"
+      },
+      "correlacao_spearman": {
+        "coeficiente_rho": -0.5928,
+        "p_valor": 0.00056,
+        "significativo_5pct": true,
+        "classificacao": "moderada negativa"
+      },
+      "justificativa_didatica": "Relação inversa esperada; útil para discutir correlação negativa e não linearidade."
+    }
+  ],
+  "regressao_temporal": [
+    {
+      "variavel": "temperature_2m_mean",
+      "periodo_dias": 30,
+      "coeficiente_angular_beta": 0.1001,
+      "intercepto_alpha": 15.3447,
+      "coeficiente_determinacao_r2": 0.107,
+      "p_valor_inclinacao": 0.07765,
+      "erro_padrao": 0.0547,
+      "significativo_5pct": false,
+      "tendencia_diagnosticada": "sem tendência estatisticamente significativa a 5%",
+      "interpretacao_pratica": "Variação média estimada de +0.1001 unidades/dia",
+      "pergunta_cientifica": "A temperatura média apresenta tendência temporal significativa ao longo das observações?"
+    },
+    {
+      "variavel": "precipitation_sum",
+      "periodo_dias": 30,
+      "coeficiente_angular_beta": 0.107,
+      "intercepto_alpha": 4.4514,
+      "coeficiente_determinacao_r2": 0.0228,
+      "p_valor_inclinacao": 0.42606,
+      "erro_padrao": 0.1325,
+      "significativo_5pct": false,
+      "tendencia_diagnosticada": "sem tendência estatisticamente significativa a 5%",
+      "interpretacao_pratica": "Variação média estimada de +0.1070 unidades/dia",
+      "pergunta_cientifica": "A precipitação acumulada mostra tendência ou padrão temporal ao longo do período?"
+    }
+  ],
+  "hipoteses_orientadoras": [
+    {
+      "id": "H1",
+      "alvo": "temperature_2m_mean",
+      "h0": "A variável segue distribuição normal.",
+      "h1": "A variável não segue distribuição normal.",
+      "teste_sugerido": "Shapiro-Wilk"
+    },
+    {
+      "id": "H2",
+      "alvo": "temperature_2m_max e apparent_temperature_max",
+      "h0": "Não há correlação entre as duas variáveis.",
+      "h1": "Há correlação entre as duas variáveis.",
+      "teste_sugerido": "Spearman (ou Pearson se normalidade confirmada)"
+    },
+    {
+      "id": "H3",
+      "alvo": "temperature_2m_mean ao longo do tempo",
+      "h0": "Não existe tendência temporal na temperatura média.",
+      "h1": "Existe tendência temporal na temperatura média.",
+      "teste_sugerido": "Mann-Kendall com regressão linear de suporte"
+    }
+  ]
+}

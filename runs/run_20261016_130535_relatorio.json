@@ -1,0 +1,69 @@
+{
+  "timestamp": "20261016_130535",
+  "etapa": "03_relatorio",
+  "modelo": "opencode/deepseek-v4.1-flash-free",
+  "metadados": {
+    "gerado_em": "20261016_125013",
+    "cidade": "Curitiba",
+    "tamanho_amostral": 30,
+    "periodo": {
+      "inicio": "2026-09-16",
+      "fim": "2026-10-15"
+    }
+  },
+  "plano_editorial_ia": {
+    "titulo_relatorio": "Relatório Técnico de Estatística Aplicada: Análise Microclimática de Curitiba (2026-09-16 a 2026-10-15)",
+    "figuras_encomendadas": [
+      {
+        "id": "figura_1",
+        "tipo_ferramenta": "distribuicao",
+        "parametros": {
+          "variavel_1": "temperature_2m_max",
+          "variavel_2": "temperature_2m_min"
+        },
+        "titulo_grafico": "Distribuição das temperaturas máxima e mínima diárias em Curitiba (30 dias)",
+        "legenda_abnt": "Figura 1 – Histogramas e boxplots das temperaturas máxima e mínima diárias (°C) em Curitiba, no período de 16/09/2026 a 15/10/2026. Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_2",
+        "tipo_ferramenta": "dispersao",
+        "parametros": {
+          "var_x": "temperature_2m_max",
+          "var_y": "temperature_2m_min"
+        },
+        "titulo_grafico": "Relação entre temperatura máxima e temperatura mínima diárias em Curitiba",
+        "legenda_abnt": "Figura 2 – Diagrama de dispersão entre temperatura máxima e temperatura mínima diárias (°C) com reta de regressão linear OLS. Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_3",
+        "tipo_ferramenta": "serie_temporal",
+        "parametros": {
+          "variavel": "precipitation_sum"
+        },
+        "titulo_grafico": "Série temporal da precipitação diária acumulada em Curitiba com reta de tendência",
+        "legenda_abnt": "Figura 3 – Série temporal da precipitação diária acumulada (mm) em Curitiba, com reta de regressão e tendência estimada. Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_4",
+        "tipo_ferramenta": "matriz_correlacao",
+        "parametros": {
+          "lista_variaveis": [
+            "temperature_2m_max",
+            "temperature_2m_min",
+            "precipitation_sum"
+          ]
+        },
+        "titulo_grafico": "Matriz de correlação de Pearson entre as variáveis meteorológicas de Curitiba",
+        "legenda_abnt": "Figura 4 – Heatmap da matriz de correlações de Pearson entre temperatura máxima, temperatura mínima e precipitação diária. Fonte: Dados da pesquisa (2026)."
+      }
+    ]
+  },
+  "artefatos_produzidos": {
+    "plano_editorial": "plano_editorial.json",
+    "relatorio_markdown": "relatorio_climatico.md",
+    "relatorio_html": "relatorio_climatico.html",
+    "relatorio_docx": "relatorio_climatico.docx",
+    "total_figuras_solicitadas": 4,
+    "total_figuras_geradas": 4
+  }
+}

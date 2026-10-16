@@ -1,0 +1,64 @@
+{
+  "timestamp": "20261013_195857",
+  "etapa": "03_relatorio",
+  "metadados": {
+    "gerado_em": "20261013_193126",
+    "cidade": "Rio de Janeiro",
+    "tamanho_amostral": 14,
+    "periodo": {
+      "inicio": "2026-09-28",
+      "fim": "2026-10-11"
+    }
+  },
+  "plano_editorial_ia": {
+    "titulo_relatorio": "Relatório Técnico-Didático de Estatística Aplicada: Análise Microclimática e Dinâmica Atmosférica do Rio de Janeiro",
+    "figuras_encomendadas": [
+      {
+        "id": "figura_1",
+        "tipo_ferramenta": "distribuicao",
+        "parametros": {
+          "variavel_1": "temperature_2m_max",
+          "variavel_2": "precipitation_sum"
+        },
+        "titulo_grafico": "Distribuição de Frequências e Boxplots: Temperatura Máxima (°C) vs. Precipitação Acumulada (mm)",
+        "legenda_abnt": "Figura 1 – Histograma e Boxplot comparativos de temperatura máxima do ar e precipitação acumulada diária no Rio de Janeiro (28/09/2026 a 11/10/2026). Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_2",
+        "tipo_ferramenta": "dispersao",
+        "parametros": {
+          "var_x": "shortwave_radiation_sum",
+          "var_y": "temperature_2m_max"
+        },
+        "titulo_grafico": "Dispersão Linear: Radiação Solar Incidente vs. Temperatura Máxima Diurna",
+        "legenda_abnt": "Figura 2 – Diagrama de dispersão com reta de regressão linear MCO entre radiação de ondas curtas (MJ/m²) e temperatura máxima (°C). Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_3",
+        "tipo_ferramenta": "dispersao",
+        "parametros": {
+          "var_x": "precipitation_hours",
+          "var_y": "precipitation_sum"
+        },
+        "titulo_grafico": "Relação Não Linear: Horas de Chuva vs. Precipitação Acumulada",
+        "legenda_abnt": "Figura 3 – Diagrama de dispersão e ajuste linear entre horas de chuva e volume pluviométrico acumulado (mm). Fonte: Dados da pesquisa (2026)."
+      },
+      {
+        "id": "figura_4",
+        "tipo_ferramenta": "serie_temporal",
+        "parametros": {
+          "variavel": "temperature_2m_max"
+        },
+        "titulo_grafico": "Evolução Temporal e Diagnóstico de Tendência: Temperatura Máxima",
+        "legenda_abnt": "Figura 4 – Série temporal de 14 dias da temperatura máxima (°C) no Rio de Janeiro com reta de tendência linear MCO. Fonte: Dados da pesquisa (2026)."
+      }
+    ]
+  },
+  "artefatos_produzidos": {
+    "plano_editorial": "plano_editorial.json",
+    "relatorio_markdown": "relatorio_climatico.md",
+    "relatorio_html": "relatorio_climatico.html",
+    "relatorio_docx": "relatorio_climatico.docx",
+    "total_figuras_geradas": 4
+  }
+}

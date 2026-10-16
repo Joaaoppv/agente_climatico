@@ -1,0 +1,30 @@
+{
+  "timestamp": "20261016_124737",
+  "etapa": "01_coleta",
+  "parametros": {
+    "cidade": "Curitiba",
+    "dias": 30,
+    "model": "opencode/deepseek-v4.1-flash-free"
+  },
+  "decisao_ia": {
+    "fonte_escolhida": "open_meteo",
+    "variaveis_selecionadas": [
+      "temperature_2m_max",
+      "temperature_2m_min",
+      "precipitation_sum"
+    ],
+    "justificativa_fonte": "A fonte open_meteo é a única que permite parametrizar explicitamente a cidade via latitude/longitude (Curitiba: -25.43, -49.27), recortar exatamente os últimos 30 dias através do parâmetro past_days (máx. 92 dias, cobrindo a janela sem problemas) e retorna dados meteorológicos diários estruturados em JSON no bloco 'daily', prontos para exportação tabular e análise estatística. A wttr_in foi descartada por fornecer apenas condições atuais e previsão de ~3 dias, sem suporte a histórico de 30 dias. A wikipedia foi descartada por ser conteúdo textual enciclopédico, sem dados numéricos estruturados, sem granularidade diária e sem recorte estruturado para Curitiba.",
+    "justificativa_variaveis": "Escolhi temperature_2m_max, temperature_2m_min e precipitation_sum por serem as três métricas quantitativas diárias mais relevantes para uma análise climatológica de Curitiba, clima subtropical úmido. O par de temperaturas máxima e mínima diária permite derivar amplitude térmica, média diária e identificação de eventos extremos de calor e frio, essenciais para conforto térmico e geadas. A precipitação acumulada diária caracteriza o regime de chuvas, a frequência de eventos úmidos e o balanço hídrico, fundamentais em uma região sem estação seca definida. Conjuntas, cobrem as dimensões térmica e hídrica dentro do limite de três variáveis."
+  },
+  "resultado": {
+    "arquivo_csv": "dados_clima.csv",
+    "total_linhas": 30,
+    "colunas_geradas": [
+      "data",
+      "temperature_2m_max",
+      "temperature_2m_min",
+      "precipitation_sum",
+      "cidade"
+    ]
+  }
+}
