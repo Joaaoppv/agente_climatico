@@ -45,7 +45,7 @@ etc. Se é só isso que você quer, **pare aqui** — não precisa do restante d
 
 ### 0.1 Pré-requisitos (Windows)
 
-1. **VS Code** (se ainda não tem):
+1. **VS Code** — https://code.visualstudio.com/
    ```powershell
    winget install Microsoft.VisualStudioCode
    ```
@@ -66,53 +66,91 @@ etc. Se é só isso que você quer, **pare aqui** — não precisa do restante d
 
 ### 0.2 OpenCode — modelos DeepSeek (grátis)
 
+O uso é todo pela **interface que abre no terminal**; você não precisa decorar comandos.
+
+**Passo 1 — instalar**
 ```powershell
 npm install -g opencode-ai
+```
+O terminal mostra os pacotes sendo baixados e termina sem erro.
+
+**Passo 2 — conferir a instalação**
+```powershell
+opencode --version
+```
+Deve aparecer o número da versão (ex.: `1.x.x`). Se der "não reconhecido", feche e reabra
+o terminal.
+
+**Passo 3 — entrar na sua conta**
+```powershell
 opencode auth login
+```
+Aparece uma **lista de providers**. Use as setas `↑`/`↓`, escolha o seu e pressione Enter
+(se pedir, autorize no navegador). No fim, o terminal confirma que a credencial foi salva.
+
+**Passo 4 — abrir a interface**
+```powershell
 opencode
 ```
+A tela do OpenCode ocupa o terminal e mostra uma **caixa de texto na parte de baixo**.
+Digite sua pergunta e pressione Enter; a resposta aparece acima, aos poucos. Para usar o
+modelo DeepSeek gratuito, digite `/models` e escolha o modelo DeepSeek. Para sair: `/exit`
+ou `Ctrl+C`.
 
-- `opencode auth login` abre a escolha de provider/conta; siga as instruções na tela.
-- `opencode` abre a interface interativa. Digite sua pergunta e pressione Enter.
-- Para usar o modelo DeepSeek gratuito:
-  ```powershell
-  opencode run --model opencode/deepseek-v4.1-flash-free "diga olá"
-  ```
-- Para conferir a instalação: `opencode --version`.
-- Outras formas de instalar (Scoop, Chocolatey, macOS/Linux): https://opencode.ai/docs/cli
-- Para sair: `/exit` ou `Ctrl+C`.
+**Passo 5 — usar na pasta do seu projeto**
+No VS Code, abra a pasta do projeto (*File → Open Folder*), abra o terminal e rode
+`opencode`. Ele já inicia naquela pasta e pode ler/criar arquivos ali.
+
+> Outras formas de instalar (Scoop, Chocolatey, macOS/Linux): https://opencode.ai/docs/cli
 
 ### 0.3 Claude Code — para quem paga Claude (Pro/Max)
 
+**Passo 1 — instalar**
 ```powershell
 npm install -g @anthropic-ai/claude-code
+```
+O terminal baixa o pacote e termina sem erro.
+
+**Passo 2 — conferir a instalação**
+```powershell
+claude --version
+```
+Deve aparecer o número da versão.
+
+**Passo 3 — abrir e fazer login**
+```powershell
 claude
 ```
+Na primeira vez, escolha o tema e o método de login: **Claude account** (assinatura
+Pro/Max) ou **API key**. Se escolher a conta, o navegador abre para você autorizar; ao
+voltar ao terminal, a interface já estará pronta, com uma caixa de texto na parte de baixo.
 
-- Na primeira vez, faça login com sua conta Claude: digite `/login` (assinatura Pro/Max)
-  **ou** defina a variável `ANTHROPIC_API_KEY` se for usar créditos de API.
-- `claude` abre a interface interativa. Digite sua pergunta e pressione Enter.
-- Modo direto, sem interface:
-  ```powershell
-  claude -p "diga olá"
-  ```
-- Para sair: `/exit` ou `Ctrl+D`.
+**Passo 4 — conversar**
+Digite sua pergunta e pressione Enter; a resposta aparece na própria interface. Para sair:
+`/exit` ou `Ctrl+D`.
 
 > O Claude Code usa apenas modelos da Anthropic — ele **não** acessa os modelos DeepSeek
 > do OpenCode. São ferramentas independentes.
 
 ### 0.4 Antigravity (`agy`) — Gemini (Google)
 
+**Passo 1 — instalar**
 ```powershell
 irm https://antigravity.google/cli/install.ps1 | iex
+```
+O PowerShell baixa e instala o CLI. O binário fica em `%LOCALAPPDATA%\agy\bin\agy.exe`.
+
+**Passo 2 — abrir e autenticar**
+```powershell
 agy
 ```
+Na primeira vez, o navegador abre para você entrar com a conta **Google**. Depois a
+interface aparece no terminal, com uma caixa de texto para conversar.
 
-- Autentique-se no **Antigravity** (conta Google) quando solicitado.
-- O binário fica em `%LOCALAPPDATA%\agy\bin\agy.exe`.
-- `agy` abre a interface no terminal. Para sair: `/exit` ou `Ctrl+C`.
-- Download/documentação: https://antigravity.google/download
+**Passo 3 — conversar**
+Digite sua pergunta e pressione Enter. Para sair: `/exit` ou `Ctrl+C`.
 
+> Download/documentação: https://antigravity.google/download
 > Foi o motor original deste projeto; hoje é apenas mais uma alternativa, sujeita aos
 > limites de tokens da conta.
 
@@ -125,8 +163,11 @@ agy
   de aceitar.
 - Peça para ela **executar** o que criou (rodar o Python, testar o script) em vez de só
   mostrar o código.
-- Comandos úteis: `--version` (versão), `/help` (ajuda dentro da interface), `Ctrl+C`
-  (cancelar) e `/exit` (sair).
+- Para a IA **ler um arquivo**, clique com o botão direito sobre ele no VS Code, escolha
+  **Copy Path** (*Copiar Caminho*) e cole o caminho na conversa — ex.: "leia
+  `C:\projetos\script.py` e explique o que ele faz".
+- Comandos úteis dentro da interface: `/help` (ajuda), `/models` (trocar de modelo),
+  `Ctrl+C` (cancelar) e `/exit` (sair).
 
 ### 0.6 Problemas comuns
 
