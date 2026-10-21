@@ -129,9 +129,13 @@ Deve aparecer o número da versão.
 ```powershell
 claude
 ```
-Na primeira vez, escolha o tema e o método de login: **Claude account** (assinatura
-Pro/Max) ou **API key**. Se escolher a conta, o navegador abre para você autorizar; ao
-voltar ao terminal, a interface já estará pronta, com uma caixa de texto na parte de baixo.
+Na primeira vez, escolha o tema e depois **Claude account** (assinatura Pro/Max). O
+navegador abre para você autorizar; ao voltar ao terminal, a interface já estará pronta,
+com uma caixa de texto na parte de baixo.
+
+> Prefira sempre o login pela conta no navegador. A opção **API key** existe, mas exige
+> gerar a chave no painel da Anthropic — é mais trabalho e só vale para quem usa créditos
+> de API.
 
 **Passo 4 — conversar**
 Digite sua pergunta e pressione Enter; a resposta aparece na própria interface. Para sair:
@@ -185,7 +189,7 @@ Digite sua pergunta e pressione Enter. Para sair: `/exit` ou `Ctrl+C`.
 | `opencode`/`claude` não reconhecido | Feche e reabra o terminal. Confira `npm config get prefix` e se essa pasta está no PATH. |
 | Erro de política de execução no PowerShell | Rode `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` e tente de novo. |
 | Login falha no OpenCode | Rode `opencode auth login` novamente e confira o provider escolhido. |
-| Login falha no Claude | Confirme a assinatura Pro/Max ativa ou a `ANTHROPIC_API_KEY` correta. |
+| Login falha no Claude | Confirme se a assinatura Pro/Max está ativa e refaça o login pela conta no navegador. |
 | `claude` pede Git no Windows | Instale o Git: `winget install Git.Git`. |
 
 ---
