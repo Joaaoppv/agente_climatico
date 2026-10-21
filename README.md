@@ -1,5 +1,12 @@
 # Agente Climático — Pipeline Autônomo de Análise Meteorológica
 
+> **Só quer instalar uma IA no terminal?**
+> Vá direto para a [seção 0](#0-ia-no-terminal--instale-e-use-sua-ia-comece-aqui). Ela
+> ensina a instalar e conversar com OpenCode (DeepSeek), Claude Code e Antigravity de
+> forma **independente** — você não precisa clonar nem entender este projeto.
+>
+> **Quer entender ou rodar este projeto?** Continue na seção 1.
+
 Pipeline de ponta a ponta que **coleta dados climáticos reais via API**, executa uma
 **análise estatística completa** e **redige um relatório técnico-científico** (HTML
 executivo + Word padrão ABNT), com gráficos gerados automaticamente.
@@ -8,19 +15,6 @@ O diferencial do projeto é que, em **cada etapa, um agente de IA decide sozinho
 fazer (qual fonte de dados usar, quais variáveis coletar, qual plano estatístico aplicar
 e como redigir o relatório). O **Python é apenas o "braço técnico"**, que executa a
 decisão da IA de forma determinística e reproduzível.
-
-> **Só quer instalar uma IA no terminal?**
-> Vá direto para a [seção 0](#0-ia-no-terminal--instale-e-use-sua-ia-comece-aqui). Ela
-> ensina a instalar e conversar com OpenCode (DeepSeek), Claude Code e Antigravity de
-> forma **independente** — você não precisa clonar nem entender este projeto.
-
-> **Motor de IA do pipeline — leia antes de rodar**
->
-> O projeto foi originalmente construído com o **Antigravity CLI** (binário `agy`, modelo
-> **Gemini**), por ter maior capacidade. Como o Antigravity ficou **sem tokens**, a rodagem
-> atual é feita **100% com o [OpenCode](https://opencode.ai)**, usando o provider do próprio
-> agente. É por isso que existem os scripts `001/002/003` (OpenCode, atuais) — o Antigravity
-> segue documentado na seção 0.4 apenas como **referência do motor original**.
 
 ---
 
@@ -43,39 +37,64 @@ Esta seção é **independente do projeto**. Ela ensina apenas a instalar uma IA
 do VS Code e conversar com ela para estudar, escrever código, rodar Python, criar projetos
 etc. Se é só isso que você quer, **pare aqui** — não precisa do restante do README.
 
+### Qual escolher?
+
+| Ferramenta | Modelo | Custo | Seção |
+|------------|--------|-------|-------|
+| **OpenCode** | DeepSeek | grátis (modelo free, com limites) | 0.2 |
+| **Claude Code** | Anthropic | plano pago (o gratuito não inclui) | 0.3 |
+| **Antigravity** (`agy`) | Gemini (Google) | conta Google, com limites | 0.4 |
+
+Escolha **uma** ferramenta e siga só a seção dela; todas usam o mesmo terminal.
+
 ### 0.1 Pré-requisitos (Windows)
 
-Instale estas duas ferramentas (se ainda não tiver):
+**Passo 1 — abrir o PowerShell**
+Se você já tem o VS Code, pode usar o terminal dele. Se ainda não tem, abra o PowerShell
+do Windows: tecle `Win`, digite **PowerShell** e pressione Enter (ou `Win+X` → *Terminal*).
 
-**VS Code** — editor de código
+**Passo 2 — instalar o VS Code**
 - Site oficial: https://code.visualstudio.com/
-- Instalação no Windows:
+- Instalação por comando:
   ```powershell
   winget install Microsoft.VisualStudioCode
   ```
 
-**Node.js LTS** — necessário para OpenCode e Claude Code
+**Passo 3 — instalar o Node.js LTS** (necessário para o OpenCode; pule se for usar só
+Claude Code ou Antigravity)
 - Site oficial: https://nodejs.org/
-- Instalação no Windows:
+- Instalação por comando:
   ```powershell
   winget install OpenJS.NodeJS.LTS
   ```
 
-Depois de instalar, **feche e abra o VS Code** e abra um terminal novo com
-`` Ctrl+` `` (ou menu *Terminal → New Terminal*). Ele deve estar em **PowerShell** — no
-Windows é o padrão; se estiver em CMD ou Git Bash, clique na seta ao lado do `+` e escolha
-**PowerShell**. Todos os comandos deste guia (blocos `powershell`) rodam nesse terminal,
-**um de cada vez**. Confira:
+> Se `winget` não for reconhecido, baixe os instaladores pelos sites oficiais acima e
+> instale manualmente. Na primeira vez, o `winget` pode pedir para aceitar os termos de
+> origem — digite `Y` e pressione Enter.
 
+**Passo 4 — abrir o terminal do VS Code**
+Abra o VS Code (se ele já estava aberto, feche e reabra) e abra um terminal novo com
+`` Ctrl+` `` (ou *Terminal → New Terminal*) — é a faixa que aparece na parte de baixo da
+janela. Ele deve estar em **PowerShell** (no Windows é o padrão); se estiver em CMD ou Git
+Bash, clique na seta ao lado do `+` e escolha **PowerShell**. Todos os comandos deste guia
+(blocos `powershell`) rodam nesse terminal, **um de cada vez**.
+
+**Passo 5 — conferir a instalação** (só se você instalou o Node)
 ```powershell
 node -v
 npm -v
 ```
+`node -v` mostra algo como `v24.x.x` e `npm -v` mostra `11.x.x`. Se aparecerem as versões,
+está pronto. Se der "não reconhecido", feche e reabra o terminal; persistindo, reinstale o
+Node.js. Se você pulou o Node (Claude Code ou Antigravity), siga direto para a sua seção.
 
-Se aparecerem as versões, está pronto. Se der "não reconhecido", feche e reabra o terminal;
-persistindo, reinstale o Node.js.
+> Se o PowerShell bloquear algum comando (por exemplo, `npm.ps1`) com erro de política de
+> execução, rode `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, confirme com `S` e
+> tente de novo.
 
 ### 0.2 OpenCode — modelos DeepSeek (grátis)
+
+> **Antes de começar:** Node.js instalado (seção 0.1).
 
 Abra um terminal novo no VS Code (`` Ctrl+` `` ou *Terminal → New Terminal*), confirme que
 está em **PowerShell** e rode os passos abaixo **um de cada vez**. O uso é todo pela
@@ -91,15 +110,16 @@ O terminal mostra os pacotes sendo baixados e termina sem erro.
 ```powershell
 opencode --version
 ```
-Deve aparecer o número da versão (ex.: `1.x.x`). Se der "não reconhecido", feche e reabra
-o terminal.
+Deve aparecer o número da versão. Se der "não reconhecido", feche e reabra o terminal.
 
 **Passo 3 — entrar na sua conta**
 ```powershell
 opencode auth login
 ```
-Aparece uma **lista de providers**. Use as setas `↑`/`↓`, escolha o seu e pressione Enter
-(se pedir, autorize no navegador). No fim, o terminal confirma que a credencial foi salva.
+Aparece uma **lista de providers**. Para o modelo gratuito, escolha **OpenCode Zen**
+(`opencode`) com as setas `↑`/`↓` e Enter; autorize no navegador se pedir. Se aparecer um
+campo de **API key**, crie a conta em https://opencode.ai/auth, copie a chave e cole no
+terminal. No fim, o terminal confirma que a credencial foi salva e você volta ao shell.
 
 **Passo 4 — abrir a interface**
 ```powershell
@@ -107,16 +127,17 @@ opencode
 ```
 A tela do OpenCode ocupa o terminal e mostra uma **caixa de texto na parte de baixo**.
 Digite sua pergunta e pressione Enter; a resposta aparece acima, aos poucos. Para usar o
-modelo DeepSeek gratuito, digite `/models` e escolha o modelo DeepSeek. Para sair: `/exit`
-ou `Ctrl+C`.
-
-**Passo 5 — usar na pasta do seu projeto**
-No VS Code, abra a pasta do projeto (*File → Open Folder*), abra o terminal e rode
-`opencode`. Ele já inicia naquela pasta e pode ler/criar arquivos ali.
+modelo DeepSeek gratuito, digite `/models` e escolha **deepseek-v4.1-flash-free** (se ele
+não aparecer, escolha outro modelo disponível na lista; o gratuito pode ter limites de
+uso). Para sair: `/exit` ou `Ctrl+C`.
 
 > Outras formas de instalar (Scoop, Chocolatey, macOS/Linux): https://opencode.ai/docs/cli
 
-### 0.3 Claude Code — para quem paga Claude (Pro/Max)
+### 0.3 Claude Code — para quem tem plano pago
+
+> **Antes de começar:** conta **Claude paga** (Pro, Max, Team, Enterprise ou Console) — o
+> plano gratuito **não** inclui o Claude Code. O **Git** no Windows é opcional: se quiser
+> o Bash tool, instale com `winget install Git.Git` ou em https://git-scm.com/download/win.
 
 Abra um terminal novo no VS Code (`` Ctrl+` `` ou *Terminal → New Terminal*), confirme que
 está em **PowerShell** e rode os passos abaixo **um de cada vez**. O uso é todo pela
@@ -124,15 +145,17 @@ está em **PowerShell** e rode os passos abaixo **um de cada vez**. O uso é tod
 
 **Passo 1 — instalar**
 ```powershell
-npm install -g @anthropic-ai/claude-code
+irm https://claude.ai/install.ps1 | iex
 ```
-O terminal baixa o pacote e termina sem erro.
+O instalador baixa o Claude Code sem mostrar progresso — aguarde terminar.
 
 **Passo 2 — conferir a instalação**
+Feche e reabra o terminal (para atualizar o PATH) e rode:
 ```powershell
 claude --version
 ```
-Deve aparecer o número da versão.
+Deve aparecer a versão, algo como `2.x.x (Claude Code)`. Se der "não reconhecido", feche e
+reabra o terminal.
 
 **Passo 3 — abrir e fazer login**
 ```powershell
@@ -169,11 +192,12 @@ O PowerShell baixa e instala o CLI. O binário fica em `%LOCALAPPDATA%\agy\bin\a
 ```powershell
 agy
 ```
-Na primeira vez, o navegador abre para você entrar com a conta **Google**. Depois a
-interface aparece no terminal, com uma caixa de texto para conversar.
+Na primeira vez, autentique-se com sua conta **Google** quando solicitado (pode abrir o
+navegador ou pedir login no Antigravity IDE). Depois a interface aparece no terminal, com
+uma caixa de texto para conversar. Se `agy` não for reconhecido, feche e reabra o terminal.
 
 **Passo 3 — conversar**
-Digite sua pergunta e pressione Enter. Para sair: `/exit` ou `Ctrl+C`.
+Digite sua pergunta e pressione Enter. Para sair: `Ctrl+C`.
 
 > Download/documentação: https://antigravity.google/download
 > Foi o motor original deste projeto; hoje é apenas mais uma alternativa, sujeita aos
@@ -191,23 +215,35 @@ Digite sua pergunta e pressione Enter. Para sair: `/exit` ou `Ctrl+C`.
 - Para a IA **ler um arquivo**, clique com o botão direito sobre ele no VS Code, escolha
   **Copy Path** (*Copiar Caminho*) e cole o caminho na conversa — ex.: "leia
   `C:\projetos\script.py` e explique o que ele faz".
-- Comandos úteis dentro da interface: `/help` (ajuda), `/models` (trocar de modelo),
-  `Ctrl+C` (cancelar) e `/exit` (sair).
+- Abra a pasta onde quer trabalhar no VS Code (*File → Open Folder*) **antes** de iniciar a
+  IA: ela enxerga e edita os arquivos dessa pasta.
+- Para colar um texto no terminal, use `Ctrl+V` ou clique com o botão direito.
+- Comandos úteis: `/help` (ajuda) e `/exit` (sair) na maioria das interfaces; no OpenCode,
+  `/models` troca o modelo; `Ctrl+C` cancela uma resposta ou fecha a interface.
 
 ### 0.6 Problemas comuns
 
 | Problema | Solução |
 |----------|---------|
+| `winget` não reconhecido | Baixe VS Code e Node.js pelos sites oficiais e instale manualmente. |
 | `node`/`npm` não reconhecido | Feche e reabra o VS Code/terminal. Se persistir, reinstale o Node.js LTS marcando a opção de adicionar ao PATH. |
-| `opencode`/`claude` não reconhecido | Feche e reabra o terminal. Confira `npm config get prefix` e se essa pasta está no PATH. |
+| `opencode` não reconhecido | Feche e reabra o terminal. Confira `npm config get prefix` e se essa pasta está no PATH. |
+| `claude` não reconhecido | Feche e reabra o terminal; se persistir, veja https://code.claude.com/docs/en/troubleshoot-install. |
 | Erro de política de execução no PowerShell | Rode `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` e tente de novo. |
-| Login falha no OpenCode | Rode `opencode auth login` novamente e confira o provider escolhido. |
-| Login falha no Claude | Confirme se a assinatura Pro/Max está ativa e refaça o login pela conta no navegador. |
-| `claude` pede Git no Windows | Instale o Git: `winget install Git.Git`. |
+| Login falha no OpenCode | Rode `opencode auth login` novamente e escolha OpenCode Zen (`opencode`) ou refaça a API key em https://opencode.ai/auth. |
+| Login falha no Claude | Confirme se o plano é pago (Pro/Max/Team/Enterprise/Console) e refaça o login pela conta no navegador. |
+| `claude` sem Bash/Git no Windows | O Git é opcional (o Claude usa PowerShell sem ele). Para o Bash tool: `winget install Git.Git`. |
 
 ---
 
 ## 1. Como funciona a arquitetura
+
+> **Motor de IA do pipeline:** o projeto foi originalmente construído com o **Antigravity
+> CLI** (binário `agy`, modelo **Gemini**), por ter maior capacidade. Como o Antigravity
+> ficou **sem tokens**, a rodagem atual é feita **100% com o
+> [OpenCode](https://opencode.ai)**, usando o provider do próprio agente. É por isso que
+> existem os scripts `001/002/003` (OpenCode, atuais) — o Antigravity segue documentado na
+> seção 0.4 apenas como **referência do motor original**.
 
 Cada etapa é dividida em dois planos:
 
