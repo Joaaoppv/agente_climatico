@@ -61,8 +61,11 @@ Instale estas duas ferramentas (se ainda não tiver):
   winget install OpenJS.NodeJS.LTS
   ```
 
-Depois de instalar, **feche e abra o VS Code** e abra o terminal integrado com
-`` Ctrl+` `` (ou menu *Terminal → New Terminal*). Confira:
+Depois de instalar, **feche e abra o VS Code** e abra um terminal novo com
+`` Ctrl+` `` (ou menu *Terminal → New Terminal*). Ele deve estar em **PowerShell** — no
+Windows é o padrão; se estiver em CMD ou Git Bash, clique na seta ao lado do `+` e escolha
+**PowerShell**. Todos os comandos deste guia (blocos `powershell`) rodam nesse terminal,
+**um de cada vez**. Confira:
 
 ```powershell
 node -v
@@ -74,7 +77,9 @@ persistindo, reinstale o Node.js.
 
 ### 0.2 OpenCode — modelos DeepSeek (grátis)
 
-O uso é todo pela **interface que abre no terminal**; você não precisa decorar comandos.
+Abra um terminal novo no VS Code (`` Ctrl+` `` ou *Terminal → New Terminal*), confirme que
+está em **PowerShell** e rode os passos abaixo **um de cada vez**. O uso é todo pela
+**interface que abre no terminal**; você não precisa decorar comandos.
 
 **Passo 1 — instalar**
 ```powershell
@@ -113,6 +118,10 @@ No VS Code, abra a pasta do projeto (*File → Open Folder*), abra o terminal e 
 
 ### 0.3 Claude Code — para quem paga Claude (Pro/Max)
 
+Abra um terminal novo no VS Code (`` Ctrl+` `` ou *Terminal → New Terminal*), confirme que
+está em **PowerShell** e rode os passos abaixo **um de cada vez**. O uso é todo pela
+**interface que abre no terminal**.
+
 **Passo 1 — instalar**
 ```powershell
 npm install -g @anthropic-ai/claude-code
@@ -145,6 +154,10 @@ Digite sua pergunta e pressione Enter; a resposta aparece na própria interface.
 > do OpenCode. São ferramentas independentes.
 
 ### 0.4 Antigravity (`agy`) — Gemini (Google)
+
+Abra um terminal novo no VS Code (`` Ctrl+` `` ou *Terminal → New Terminal*), confirme que
+está em **PowerShell** e rode os passos abaixo **um de cada vez**. O uso é todo pela
+**interface que abre no terminal**.
 
 **Passo 1 — instalar**
 ```powershell
