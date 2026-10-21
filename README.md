@@ -9,26 +9,135 @@ fazer (qual fonte de dados usar, quais variáveis coletar, qual plano estatísti
 e como redigir o relatório). O **Python é apenas o "braço técnico"**, que executa a
 decisão da IA de forma determinística e reproduzível.
 
-> **Motor de IA — leia isto primeiro**
+> **Só quer instalar uma IA no terminal?**
+> Vá direto para a [seção 0](#0-ia-no-terminal--instale-e-use-sua-ia-comece-aqui). Ela
+> ensina a instalar e conversar com OpenCode (DeepSeek), Claude Code e Antigravity de
+> forma **independente** — você não precisa clonar nem entender este projeto.
+
+> **Motor de IA do pipeline — leia antes de rodar**
 >
 > O projeto foi originalmente construído com o **Antigravity CLI** (binário `agy`, modelo
 > **Gemini**), por ter maior capacidade. Como o Antigravity ficou **sem tokens**, a rodagem
 > atual é feita **100% com o [OpenCode](https://opencode.ai)**, usando o provider do próprio
 > agente. É por isso que existem os scripts `001/002/003` (OpenCode, atuais) — o Antigravity
-> segue documentado no fim deste README apenas como **referência do motor original**.
+> segue documentado na seção 0.4 apenas como **referência do motor original**.
 
 ---
 
 ## Índice
 
+0. [IA no terminal — instale e use sua IA (comece aqui)](#0-ia-no-terminal--instale-e-use-sua-ia-comece-aqui)
 1. [Como funciona a arquitetura](#1-como-funciona-a-arquitetura)
-2. [Ferramentas necessárias (instalação passo a passo)](#2-ferramentas-necessárias-instalação-passo-a-passo)
-3. [Como chamar o agente no terminal](#3-como-chamar-o-agente-no-terminal)
-4. [Estrutura do projeto](#4-estrutura-do-projeto)
-5. [Configuração](#5-configuração)
-6. [Execução do pipeline](#6-execução-do-pipeline)
-7. [Saídas geradas](#7-saídas-geradas)
-8. [Solução de problemas](#8-solução-de-problemas)
+2. [Dependências do projeto](#2-dependências-do-projeto)
+3. [Estrutura do projeto](#3-estrutura-do-projeto)
+4. [Configuração](#4-configuração)
+5. [Execução do pipeline](#5-execução-do-pipeline)
+6. [Saídas geradas](#6-saídas-geradas)
+7. [Solução de problemas](#7-solução-de-problemas)
+
+---
+
+## 0. IA no terminal — instale e use sua IA (comece aqui)
+
+Esta seção é **independente do projeto**. Ela ensina apenas a instalar uma IA no terminal
+do VS Code e conversar com ela para estudar, escrever código, rodar Python, criar projetos
+etc. Se é só isso que você quer, **pare aqui** — não precisa do restante do README.
+
+### 0.1 Pré-requisitos (Windows)
+
+1. **VS Code** (se ainda não tem):
+   ```powershell
+   winget install Microsoft.VisualStudioCode
+   ```
+2. **Node.js LTS** (necessário para OpenCode e Claude Code):
+   ```powershell
+   winget install OpenJS.NodeJS.LTS
+   ```
+   Ou baixe em https://nodejs.org/ (versão LTS).
+3. **Feche e abra o VS Code** e abra o terminal integrado com `` Ctrl+` `` (ou menu
+   *Terminal → New Terminal*).
+4. Confira se está tudo instalado:
+   ```powershell
+   node -v
+   npm -v
+   ```
+   Se aparecerem as versões, está pronto. Se der "não reconhecido", feche e reabra o
+   terminal; persistindo, reinstale o Node.js.
+
+### 0.2 OpenCode — modelos DeepSeek (grátis)
+
+```powershell
+npm install -g opencode-ai
+opencode auth login
+opencode
+```
+
+- `opencode auth login` abre a escolha de provider/conta; siga as instruções na tela.
+- `opencode` abre a interface interativa. Digite sua pergunta e pressione Enter.
+- Para usar o modelo DeepSeek gratuito:
+  ```powershell
+  opencode run --model opencode/deepseek-v4.1-flash-free "diga olá"
+  ```
+- Para conferir a instalação: `opencode --version`.
+- Outras formas de instalar (Scoop, Chocolatey, macOS/Linux): https://opencode.ai/docs/cli
+- Para sair: `/exit` ou `Ctrl+C`.
+
+### 0.3 Claude Code — para quem paga Claude (Pro/Max)
+
+```powershell
+npm install -g @anthropic-ai/claude-code
+claude
+```
+
+- Na primeira vez, faça login com sua conta Claude: digite `/login` (assinatura Pro/Max)
+  **ou** defina a variável `ANTHROPIC_API_KEY` se for usar créditos de API.
+- `claude` abre a interface interativa. Digite sua pergunta e pressione Enter.
+- Modo direto, sem interface:
+  ```powershell
+  claude -p "diga olá"
+  ```
+- Para sair: `/exit` ou `Ctrl+D`.
+
+> O Claude Code usa apenas modelos da Anthropic — ele **não** acessa os modelos DeepSeek
+> do OpenCode. São ferramentas independentes.
+
+### 0.4 Antigravity (`agy`) — Gemini (Google)
+
+```powershell
+irm https://antigravity.google/cli/install.ps1 | iex
+agy
+```
+
+- Autentique-se no **Antigravity** (conta Google) quando solicitado.
+- O binário fica em `%LOCALAPPDATA%\agy\bin\agy.exe`.
+- `agy` abre a interface no terminal. Para sair: `/exit` ou `Ctrl+C`.
+- Download/documentação: https://antigravity.google/download
+
+> Foi o motor original deste projeto; hoje é apenas mais uma alternativa, sujeita aos
+> limites de tokens da conta.
+
+### 0.5 Dicas para conversar com a IA
+
+- Escreva em português e seja específico: "crie um script Python que lê um CSV e plota um
+  gráfico" funciona melhor que "me ajuda com Python".
+- Cole o erro completo quando algo falhar.
+- A IA pode pedir **permissão** para rodar comandos ou criar/editar arquivos — leia antes
+  de aceitar.
+- Peça para ela **executar** o que criou (rodar o Python, testar o script) em vez de só
+  mostrar o código.
+- Comandos úteis: `--version` (versão), `/help` (ajuda dentro da interface), `Ctrl+C`
+  (cancelar) e `/exit` (sair).
+
+### 0.6 Problemas comuns
+
+| Problema | Solução |
+|----------|---------|
+| `node`/`npm` não reconhecido | Feche e reabra o VS Code/terminal. Se persistir, reinstale o Node.js LTS marcando a opção de adicionar ao PATH. |
+| `opencode`/`claude` não reconhecido | Feche e reabra o terminal. Confira `npm config get prefix` e se essa pasta está no PATH. |
+| Erro de política de execução no PowerShell | Rode `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` e tente de novo. |
+| Login falha no OpenCode | Rode `opencode auth login` novamente e confira o provider escolhido. |
+| Login falha no Claude | Confirme a assinatura Pro/Max ativa ou a `ANTHROPIC_API_KEY` correta. |
+| `claude` pede Git no Windows | Instale o Git: `winget install Git.Git`. |
 
 ---
 
@@ -66,132 +175,34 @@ scripts/003_relatorio.py
 Cada execução também grava um **log de auditoria** em `runs/run_<timestamp>_<etapa>.json`
 com os parâmetros usados, a decisão da IA e os artefatos produzidos.
 
+> **Como a IA é chamada:** os scripts rodam o OpenCode em modo não-interativo
+> (`opencode run --model opencode/deepseek-v4.1-flash-free "..."`), passando o prompt de
+> cada etapa. Instalação e login estão na seção 0.2; para conversar manualmente, rode
+> `opencode` na raiz do projeto.
+
 ---
 
-## 2. Ferramentas necessárias (instalação passo a passo)
+## 2. Dependências do projeto
 
-Você só precisa de **três** coisas para rodar o projeto: um editor (opcional), o
-**OpenCode** (o cérebro) e o **Python** (o motor). Siga na ordem.
+Para rodar o pipeline você precisa de:
 
-### 2.1 VS Code — editor de código (recomendado, opcional)
-
-Não é obrigatório para executar, mas facilita abrir/editar os arquivos.
-
-- **Site oficial:** https://code.visualstudio.com/
-- **Windows (winget):**
-  ```powershell
-  winget install Microsoft.VisualStudioCode
-  ```
-- **Extensão do OpenCode no VS Code:** abra a aba *Extensions* (`Ctrl+Shift+X`), procure
-  por **OpenCode** e clique em *Install*. (Opcional — o pipeline funciona sem ela.)
-
-### 2.2 OpenCode — o motor de IA oficial do projeto
-
-- **Site / documentação:** https://opencode.ai  — docs do CLI: https://opencode.ai/docs/cli
-
-**Instalação (escolha UMA):**
-
-- **Via npm (mais simples no Windows):**
-  ```powershell
-  npm install -g opencode-ai
-  ```
-- **Script oficial (macOS/Linux/WSL):**
-  ```bash
-  curl -fsSL https://opencode.ai/install | bash
-  ```
-- **Windows (Chocolatey):**
-  ```powershell
-  choco install opencode
-  ```
-- **Windows (Scoop):**
-  ```powershell
-  scoop install opencode
-  ```
-
-> No Windows, o instalador via npm coloca o executável em:
-> `%APPDATA%\npm\node_modules\opencode-ai\bin\opencode.exe`
-> Os scripts do projeto apontam exatamente para esse caminho.
-
-**Autenticar / configurar o provider (obrigatório antes de rodar):**
-
-```powershell
-opencode auth login
-```
-
-Siga as instruções na tela para conectar sua conta/API key do provider. As credenciais
-ficam salvas no seu perfil (não vão para o repositório).
-
-**Verificar a instalação:**
-
-```powershell
-opencode --version
-```
-
-### 2.3 Python 3.10 ou superior
-
-- **Site oficial:** https://www.python.org/downloads/ (no Windows, marque
+- **OpenCode instalado e autenticado** — passo a passo na seção 0.2. O projeto usa o
+  modelo `opencode/deepseek-v4.1-flash-free`.
+- **Python 3.10 ou superior** — https://www.python.org/downloads/ (no Windows, marque
   *"Add python.exe to PATH"* durante a instalação).
+- **VS Code** (opcional, recomendado) — instalação na seção 0.1.
 
-**Instale as dependências do projeto** (a partir da raiz `agente_climatico\`):
+Instale as dependências Python **a partir da raiz `agente_climatico\`**:
 
 ```powershell
 pip install pandas requests scipy numpy matplotlib python-docx markdown
 ```
 
-### 2.4 Antigravity (motor original — apenas referência)
-
-O projeto **não usa mais** o Antigravity, mas ele foi o motor original. Se quiser
-reproduzir a versão antiga, o CLI (`agy`) instala assim:
-
-- **Download / docs:** https://antigravity.google/download
-- **Windows (PowerShell):**
-  ```powershell
-  irm https://antigravity.google/cli/install.ps1 | iex
-  ```
-- **Windows (CMD):**
-  ```cmd
-  curl -fsSL https://antigravity.google/cli/install.cmd -o install.cmd && install.cmd && del install.cmd
-  ```
-- **macOS / Linux:**
-  ```bash
-  curl -fsSL https://antigravity.google/cli/install.sh | bash
-  ```
-
-O binário fica em `%LOCALAPPDATA%\agy\bin\agy.exe`. Antes de usar o CLI, é preciso
-autenticar no **Antigravity** ou no **Antigravity IDE**.
+> Se `pip` não for reconhecido, use `py -m pip install ...`.
 
 ---
 
-## 3. Como chamar o agente no terminal
-
-Com o **OpenCode** instalado e autenticado (`opencode auth login`), você pode conversar
-com o agente de duas formas:
-
-**Modo interativo (TUI) — para uso manual:**
-
-```powershell
-opencode
-```
-
-**Modo não-interativo — é o que os scripts usam por baixo dos panos:**
-
-```powershell
-opencode run --model opencode/deepseek-v4.1-flash-free "sua pergunta aqui"
-```
-
-Os três scripts chamam o OpenCode exatamente assim, passando o prompt da etapa e pedindo
-uma resposta em JSON. Exemplo de chamada equivalente à Etapa 1:
-
-```powershell
-opencode run --model opencode/deepseek-v4.1-flash-free "Você é um agente de coleta meteorológica..."
-```
-
-> **Dica:** você pode abrir o projeto já dentro da TUI do OpenCode (com `opencode` na raiz
-> do projeto) e pedir ajuda para rodar/ajustar o pipeline manualmente.
-
----
-
-## 4. Estrutura do projeto
+## 3. Estrutura do projeto
 
 ```
 agente_climatico/
@@ -232,23 +243,24 @@ agente_climatico/
 
 ---
 
-## 5. Configuração
+## 4. Configuração
 
 As constantes ficam no topo de cada script e quase nunca precisam ser alteradas:
 
-| Configuração       | Onde                              | Valor padrão |
-|--------------------|-----------------------------------|--------------|
-| Caminho do OpenCode| `OPEN_CODE` em cada `00X_*.py`    | `%APPDATA%\npm\node_modules\opencode-ai\bin\opencode.exe` |
-| Modelo da IA       | `MODELO_PADRAO` em cada `00X_*.py`| `opencode/deepseek-v4.1-flash-free` |
-| Fontes disponíveis | `input/fontes.json`               | Open-Meteo, wttr.in, Wikipedia |
+| Configuração        | Onde                                                 | Valor padrão |
+|---------------------|------------------------------------------------------|--------------|
+| Caminho do OpenCode | `OPEN_CODE` em `001_coleta.py`                       | `opencode.cmd` (resolvido pelo PATH) |
+| Caminho do OpenCode | `OPEN_CODE` em `002_analise.py` e `003_relatorio.py` | `%APPDATA%\npm\node_modules\opencode-ai\bin\opencode.exe` |
+| Modelo da IA        | `MODELO_PADRAO` em cada `00X_*.py`                   | `opencode/deepseek-v4.1-flash-free` |
+| Fontes disponíveis  | `input/fontes.json`                                  | Open-Meteo, wttr.in, Wikipedia |
 
-> **Se o OpenCode estiver instalado em outro lugar** (ex.: via Scoop/Chocolatey), edite a
-> constante `OPEN_CODE` / `OPEN_CODE` no topo do script para o caminho correto do
-> `opencode.exe`. O mesmo vale para trocar o modelo de IA.
+> A Etapa 1 chama `opencode.cmd` (criado pela instalação via npm) e depende do PATH; as
+> Etapas 2 e 3 usam o caminho absoluto da tabela. Se o OpenCode estiver em outro lugar,
+> ajuste `OPEN_CODE` no topo do script correspondente. O mesmo vale para trocar o modelo.
 
 ---
 
-## 6. Execução do pipeline
+## 5. Execução do pipeline
 
 Execute os três scripts **na ordem**, sempre a partir da **raiz do projeto**
 (`agente_climatico\`). Não pule etapas: cada uma depende dos arquivos gerados pela anterior.
@@ -300,7 +312,7 @@ python scripts\001_coleta.py; if ($LASTEXITCODE -eq 0) { python scripts\002_anal
 
 ---
 
-## 7. Saídas geradas
+## 6. Saídas geradas
 
 | Arquivo                                        | Descrição |
 |------------------------------------------------|-----------|
@@ -319,14 +331,20 @@ As pastas `output/` e `runs/` já vêm com **exemplos de execuções anteriores*
 
 ---
 
-## 8. Solução de problemas
+## 7. Solução de problemas
 
-- **`Executável OpenCode não encontrado em: ...`**
-  O OpenCode não está no caminho esperado. Rode `npm install -g opencode-ai` ou ajuste a
-  constante `OPEN_CODE` no topo do script para o caminho do seu `opencode.exe`.
+Para problemas de instalação/login das IAs (Node, PATH, PowerShell), veja a **seção 0.6**.
 
-- **Resposta vazia / erro de autenticação do OpenCode**
-  Rode `opencode auth login` e confirme que o provider está configurado. Teste com
+- **`Executável OpenCode não encontrado em: ...`** (Etapas 2 e 3)
+  O caminho em `OPEN_CODE` não existe. Instale via npm (seção 0.2) ou ajuste a constante
+  no topo do script para o caminho do seu `opencode.exe`.
+
+- **`'opencode.cmd' não é reconhecido...`** (Etapa 1)
+  O OpenCode não está no PATH. Rode `npm install -g opencode-ai` e reabra o terminal, ou
+  ajuste `OPEN_CODE` no topo de `001_coleta.py`.
+
+- **Resposta vazia / erro de autenticação**
+  Rode `opencode auth login` e confirme o provider. Teste com
   `opencode run --model opencode/deepseek-v4.1-flash-free "diga olá"`.
 
 - **`ModuleNotFoundError: No module named '...'`**
