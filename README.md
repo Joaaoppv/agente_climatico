@@ -45,24 +45,32 @@ etc. Se é só isso que você quer, **pare aqui** — não precisa do restante d
 
 ### 0.1 Pré-requisitos (Windows)
 
-1. **VS Code** — https://code.visualstudio.com/
-   ```powershell
-   winget install Microsoft.VisualStudioCode
-   ```
-2. **Node.js LTS** (necessário para OpenCode e Claude Code):
-   ```powershell
-   winget install OpenJS.NodeJS.LTS
-   ```
-   Ou baixe em https://nodejs.org/ (versão LTS).
-3. **Feche e abra o VS Code** e abra o terminal integrado com `` Ctrl+` `` (ou menu
-   *Terminal → New Terminal*).
-4. Confira se está tudo instalado:
-   ```powershell
-   node -v
-   npm -v
-   ```
-   Se aparecerem as versões, está pronto. Se der "não reconhecido", feche e reabra o
-   terminal; persistindo, reinstale o Node.js.
+Instale estas duas ferramentas (se ainda não tiver):
+
+**VS Code** — editor de código
+- Site oficial: https://code.visualstudio.com/
+- Instalação no Windows:
+  ```powershell
+  winget install Microsoft.VisualStudioCode
+  ```
+
+**Node.js LTS** — necessário para OpenCode e Claude Code
+- Site oficial: https://nodejs.org/
+- Instalação no Windows:
+  ```powershell
+  winget install OpenJS.NodeJS.LTS
+  ```
+
+Depois de instalar, **feche e abra o VS Code** e abra o terminal integrado com
+`` Ctrl+` `` (ou menu *Terminal → New Terminal*). Confira:
+
+```powershell
+node -v
+npm -v
+```
+
+Se aparecerem as versões, está pronto. Se der "não reconhecido", feche e reabra o terminal;
+persistindo, reinstale o Node.js.
 
 ### 0.2 OpenCode — modelos DeepSeek (grátis)
 
